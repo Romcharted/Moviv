@@ -8,9 +8,12 @@
         "cSpell.words": [
             "APIKEY",
             "AUTHDOMAIN",
+            "kyvg",
             "MEASUREMENTID",
             "MESSAGINGSENDERID",
-            "STORAGEBUCKET"
+            "PROJECTID",
+            "STORAGEBUCKET",
+            "unplugin"
         ]
     }
 }
