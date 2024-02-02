@@ -11,9 +11,12 @@
             "kyvg",
             "MEASUREMENTID",
             "MESSAGINGSENDERID",
+            "Moviv",
             "PROJECTID",
             "STORAGEBUCKET",
-            "unplugin"
+            "unplugin",
+            "wdth",
+            "wght"
         ]
     }
 }

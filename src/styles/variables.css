@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Noto Serif";
+    font-style: normal;
+    font-weight: 1 1000;
+    font-stretch: normal;
+    src: url("../assets/fonts/NotoSerif-VariableFont_wdth,wght.ttf")
+        format("truetype-variations");
+}
+
+@font-face {
+    font-family: "Anton";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/fonts/Anton-Regular.ttf") format("truetype");
+}
+
+:root {
+    --main-color: #6324eb;
+    --text-btn-color: #fefcfd;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --secondary-color: #ececec;
+        --background-color: #f7f7f7;
+        --text-color: #292929;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --secondary-color: #171719;
+        --background-color: #0f0f0f;
+        --text-color: #fefcfd;
+    }
+}

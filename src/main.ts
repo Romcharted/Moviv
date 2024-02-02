@@ -1,5 +1,8 @@
+import "./styles/reset.css";
+import "./styles/variables.css";
+import "./styles/style.css";
+
 import { createApp } from "vue";
-import "./style.css";
 import App from "./App.vue";
 import Notifications from "@kyvg/vue3-notification";
 
