@@ -14,10 +14,11 @@
             <span>{{ $t("settings.logout") }}</span>
         </div>
 
-        <div class="menu-bottom__item">
-            <i class="material-icons-outlined"> light_mode </i>
-
-            <span>{{ $t("settings.dark-mode") }}</span>
+        <div class="menu-bottom__item part__dark-mode">
+            <div class="menu-bottom__item-text">
+                <i class="material-icons-outlined"> light_mode </i>
+                <span>{{ $t("settings.dark-mode") }}</span>
+            </div>
 
             <div class="menu-bottom__item__toggle-container">
                 <input
@@ -87,6 +88,17 @@ onMounted(() => {
 }
 
 .menu-bottom__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.part__dark-mode {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.menu-bottom__item-text {
     display: flex;
     align-items: center;
     gap: 12px;
