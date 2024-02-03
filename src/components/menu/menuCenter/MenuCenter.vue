@@ -17,5 +17,5 @@ import { useRouter } from "vue-router";
 import MenuCenterItem from "./MenuCenterItem.vue";
 
 const router = useRouter();
-const filteredRoutes = router.options.routes.filter((r) => r.meta?.label);
+const filteredRoutes = router.options.routes.filter((r) => r.meta?.menu);
 </script>

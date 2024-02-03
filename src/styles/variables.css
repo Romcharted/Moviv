@@ -16,21 +16,19 @@
 
 :root {
     --main-color: #6324eb;
+    --text-color: #292929;
+
+    --border-radius: 4px;
+}
+
+:root.light-theme {
+    --secondary-color: #ececec;
+    --background-color: #f7f7f7;
     --text-btn-color: #fefcfd;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --secondary-color: #ececec;
-        --background-color: #f7f7f7;
-        --text-color: #292929;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --secondary-color: #171719;
-        --background-color: #0f0f0f;
-        --text-color: #fefcfd;
-    }
+:root.dark-theme {
+    --secondary-color: #171719;
+    --background-color: #0f0f0f;
+    --text-color: #fefcfd;
 }

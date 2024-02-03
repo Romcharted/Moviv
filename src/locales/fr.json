@@ -6,6 +6,12 @@
         "movie": "Film",
         "news": "Actualités",
         "search": "Recherche",
-        "top-100": "Top 100"
+        "top-100": "Top 100",
+        "notification": "Notification"
+    },
+    "settings": {
+        "dark-mode": "Mode sombre",
+        "logout": "Déconnexion",
+        "sign-in": "Connexion"
     }
 }

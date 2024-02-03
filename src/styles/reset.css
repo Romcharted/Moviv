@@ -14,8 +14,9 @@ body {
     text-rendering: optimizeSpeed;
 }
 
-ul[role="list"],
-ol[role="list"] {
+ul,
+ol,
+li {
     list-style: none;
 }
 

@@ -6,6 +6,12 @@
         "movie": "Movie",
         "news": "News",
         "search": "Search",
-        "top-100": "Top 100"
+        "top-100": "Top 100",
+        "notification": "notification"
+    },
+    "settings": {
+        "dark-mode": "Dark Mode",
+        "logout": "Log Out",
+        "sign-in": "Sign In"
     }
 }

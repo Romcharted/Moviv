@@ -7,6 +7,8 @@ import News from "@/views/News.vue";
 import Search from "@/views/Search.vue";
 import Top100 from "@/views/Top100.vue";
 import NotFound from "@/views/404.vue";
+import Notifications from "@/views/Notifications.vue";
+import Settings from "@/views/Settings.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -14,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Home,
         name: "Home",
         meta: {
-            label: "home",
+            menu: "home",
         },
     },
     {
@@ -22,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
         component: ComingSoon,
         name: "ComingSoon",
         meta: {
-            label: "coming-soon",
+            menu: "coming-soon",
         },
     },
     {
@@ -30,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Discovery,
         name: "Discovery",
         meta: {
-            label: "discovery",
+            menu: "discovery",
         },
     },
     {
@@ -38,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Movie,
         name: "Movie",
         meta: {
-            label: "movie",
+            menu: "movie",
         },
     },
     {
@@ -46,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
         component: News,
         name: "News",
         meta: {
-            label: "news",
+            menu: "news",
         },
     },
     {
@@ -54,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Search,
         name: "Search",
         meta: {
-            label: "search",
+            menu: "search",
         },
     },
     {
@@ -62,8 +64,18 @@ const routes: Array<RouteRecordRaw> = [
         component: Top100,
         name: "Top100",
         meta: {
-            label: "top-100",
+            menu: "top-100",
         },
+    },
+    {
+        path: "/notifications",
+        component: Notifications,
+        name: "Notifications",
+    },
+    {
+        path: "/settings",
+        component: Settings,
+        name: "Settings",
     },
     {
         path: "/:catchAll(.*)",
