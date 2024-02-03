@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Home,
         name: "Home",
         meta: {
-            label: "Home",
+            label: "home",
         },
     },
     {
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
         component: ComingSoon,
         name: "ComingSoon",
         meta: {
-            label: "Coming Soon",
+            label: "coming-soon",
         },
     },
     {
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Discovery,
         name: "Discovery",
         meta: {
-            label: "Discovery",
+            label: "discovery",
         },
     },
     {
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Movie,
         name: "Movie",
         meta: {
-            label: "Movie",
+            label: "movie",
         },
     },
     {
@@ -46,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
         component: News,
         name: "News",
         meta: {
-            label: "News",
+            label: "news",
         },
     },
     {
@@ -54,7 +54,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Search,
         name: "Search",
         meta: {
-            label: "Search",
+            label: "search",
         },
     },
     {
@@ -62,7 +62,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Top100,
         name: "Top100",
         meta: {
-            label: "Top 100",
+            label: "top-100",
         },
     },
     {

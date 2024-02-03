@@ -1,4 +1,11 @@
 {
-    "hello": "Bonjour",
-    "welcome": "Bienvenue"
+    "menu": {
+        "home": "Accueil",
+        "coming-soon": "Prochainement",
+        "discovery": "Découverte",
+        "movie": "Film",
+        "news": "Actualités",
+        "search": "Recherche",
+        "top-100": "Top 100"
+    }
 }

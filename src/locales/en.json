@@ -1,4 +1,11 @@
 {
-    "hello": "Hello",
-    "welcome": "Welcome"
+    "menu": {
+        "home": "Home",
+        "coming-soon": "Coming Soon",
+        "discovery": "Discovery",
+        "movie": "Movie",
+        "news": "News",
+        "search": "Search",
+        "top-100": "Top 100"
+    }
 }
