@@ -1,17 +1,18 @@
-<script setup lang="ts">
-// ...
-</script>
-
 <template>
     <div id="menu">
         <p>Menu</p>
+        <MenuCenter />
     </div>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import MenuCenter from "./menuCenter/MenuCenter.vue";
+</script>
+
+<style>
 #menu {
-    font-family: "Noto Serif Variable", sans-serif;
-    font-weight: 500;
-    font-size: 50px;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 14px;
+    color: var(--text-color);
 }
 </style>
