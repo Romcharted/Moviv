@@ -20,14 +20,57 @@
             <span>{{ $t("settings.dark-mode") }}</span>
 
             <div class="menu-bottom__item__toggle-container">
-                <input type="checkbox" id="switch-theme" />
+                <input
+                    type="checkbox"
+                    id="switch-theme"
+                    @change="toggleTheme"
+                    v-model="userThemeToggleActive"
+                />
                 <label for="switch-theme"></label>
             </div>
         </div>
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+
+// Fonction pour définir le thème et mettre à jour
+const setTheme = (theme: string) => {
+    localStorage.setItem("user-theme", theme);
+    document.documentElement.className = theme;
+    userTheme.value = theme;
+    userThemeToggleActive.value = theme === "dark-theme" ? true : false;
+};
+
+// Fonction pour récupérer le thème stocké dans le localStorage
+const getTheme = (): string => {
+    const storedTheme = localStorage.getItem("user-theme");
+    return storedTheme ? storedTheme : "light-theme";
+};
+
+const userTheme = ref(getTheme());
+const userThemeToggleActive = ref(false);
+
+// Fonction pour basculer entre les thèmes
+const toggleTheme = () => {
+    const newTheme =
+        userTheme.value === "dark-theme" ? "light-theme" : "dark-theme";
+    setTheme(newTheme);
+};
+
+onMounted(() => {
+    // Récupère le thème stocké dans le localStorage
+    const storedTheme = localStorage.getItem("user-theme");
+
+    // Si un thème est stocké, appliquer ce thème, sinon, appliquer le thème par défaut "light-theme"
+    if (storedTheme) {
+        setTheme(storedTheme);
+    } else {
+        setTheme("light-theme");
+    }
+});
+</script>
 
 <style>
 .menu-bottom {
