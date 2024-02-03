@@ -17,7 +17,7 @@ import MenuTopNotification from "./MenuTopNotification.vue";
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 30px;
+    gap: 15px;
 
     width: 100%;
     padding: 30px 15px 20px 15px;
