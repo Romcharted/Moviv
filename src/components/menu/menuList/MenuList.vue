@@ -18,9 +18,10 @@
             <template v-if="isConnected">
                 <MenuListItem
                     v-for="(list, index) in lists"
-                    :key="list.id"
+                    :key="index"
                     :name="list.name"
-                    :link="list.link"
+                    :link="'OneList'"
+                    :id="list.id"
                     :isFirst="index === 0"
                 />
             </template>
@@ -45,14 +46,14 @@ const toggleExpansion = () => {
     isExpanded.value = !isExpanded.value;
 };
 
-const isConnected = ref(false);
-const lists = ref<Array<{ id: number; name: string; link: string }>>([]);
+const isConnected = ref(true);
+const lists = ref<Array<{ id: number; name: string }>>([]);
 
 // Exemple
 lists.value = [
-    { id: 1, name: "List 1", link: "#" },
-    { id: 2, name: "List 2", link: "#" },
-    { id: 3, name: "List 3", link: "#" },
+    { id: 1245, name: "List 1" },
+    { id: 7534, name: "List 2" },
+    { id: 1404, name: "List 3" },
 ];
 </script>
 

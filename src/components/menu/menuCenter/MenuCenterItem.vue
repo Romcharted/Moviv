@@ -28,6 +28,8 @@ const props = defineProps(["routeConfig"]);
 
     border-radius: var(--border-radius);
     padding: 10px 15px;
+
+    transition: all 0.3s;
 }
 
 .nav-item a.router-link-exact-active {

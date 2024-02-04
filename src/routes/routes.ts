@@ -10,6 +10,8 @@ import NotFound from "@/views/404.vue";
 import Notifications from "@/views/Notifications.vue";
 import Settings from "@/views/Settings.vue";
 import LogIn from "@/views/LogIn.vue";
+import Lists from "@/views/Lists.vue";
+import OneList from "@/views/OneList.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -89,6 +91,16 @@ const routes: Array<RouteRecordRaw> = [
         path: "/log-in",
         component: LogIn,
         name: "LogIn",
+    },
+    {
+        path: "/lists",
+        component: Lists,
+        name: "Lists",
+    },
+    {
+        path: "/list/:id",
+        component: OneList,
+        name: "OneList",
     },
     {
         path: "/:catchAll(.*)",

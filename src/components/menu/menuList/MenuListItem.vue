@@ -1,14 +1,22 @@
 <template>
     <div :class="{ 'menu-list__item': true, isFirst: isFirst }">
         <span class="menu-list__item-before"></span>
-        <router-link :to="{ name: link }">{{ name }}</router-link>
+        <router-link :to="generateRouteLink()">{{ name }}</router-link>
     </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-const props = defineProps(["name", "link", "isFirst"]);
+const props = defineProps(["name", "link", "id", "isFirst"]);
+
+const generateRouteLink = () => {
+    if (props.id !== undefined && props.id !== null) {
+        return { name: props.link, params: { id: props.id } };
+    } else {
+        return { name: props.link };
+    }
+};
 </script>
 
 <style>
@@ -25,8 +33,14 @@ const props = defineProps(["name", "link", "isFirst"]);
 .menu-list__item a {
     width: 100%;
     padding: 10px;
-    background-color: var(--main-color);
     border-radius: var(--border-radius);
+    transition: all 0.3s;
+}
+
+.menu-list__item a.router-link-exact-active {
+    background-color: var(--main-color);
+    font-weight: 600;
+    color: var(--text-btn-color);
 }
 
 .menu-list__item-before {
