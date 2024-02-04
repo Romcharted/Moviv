@@ -2,14 +2,19 @@
     <div class="menu-list">
         <div
             class="menu-list__title"
-            @click="toggleExpansion"
-            :class="{ isExpanded: isExpanded }"
+            :class="{
+                isExpanded: isExpanded,
+                'router-link-exact-active': $route.name === 'Lists',
+            }"
         >
-            <div>
+            <router-link :to="{ name: 'Lists' }" class="menu-list__title-text">
                 <i class="material-icons-outlined"> bookmarks </i>
                 <span>{{ $t("menu.my-list") }}</span>
-            </div>
-            <i class="material-icons-outlined menu-list__title-chevron">
+            </router-link>
+            <i
+                class="material-icons-outlined menu-list__title-chevron"
+                @click="toggleExpansion"
+            >
                 expand_more
             </i>
         </div>
@@ -78,19 +83,20 @@ lists.value = [
 
     width: 100%;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px 15px;
+    padding-left: 15px;
     border-radius: var(--border-radius);
     cursor: pointer;
 
     transition: all 0.3s;
 }
 
-.menu-list__title.isExpanded {
+.menu-list__title.isExpanded,
+.menu-list__title.router-link-exact-active {
     background-color: var(--main-color);
     color: var(--text-btn-color);
 }
 
-.menu-list__title div {
+.menu-list__title .menu-list__title-text {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -101,6 +107,14 @@ lists.value = [
 
 .menu-list__title .menu-list__title-chevron {
     transition: transform 0.3s;
+    width: 40%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    padding: 10px 15px 10px 0;
 }
 
 .menu-list__title.isExpanded .menu-list__title-chevron {
