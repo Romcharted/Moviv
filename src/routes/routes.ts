@@ -9,6 +9,7 @@ import Top100 from "@/views/Top100.vue";
 import NotFound from "@/views/404.vue";
 import Notifications from "@/views/Notifications.vue";
 import Settings from "@/views/Settings.vue";
+import LogIn from "@/views/LogIn.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -83,6 +84,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "/settings",
         component: Settings,
         name: "Settings",
+    },
+    {
+        path: "/log-in",
+        component: LogIn,
+        name: "LogIn",
     },
     {
         path: "/:catchAll(.*)",

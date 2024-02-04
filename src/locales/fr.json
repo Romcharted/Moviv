@@ -8,7 +8,8 @@
         "search": "Recherche",
         "top-100": "Top 100",
         "notification": "Notification",
-        "my-list": "Mes Listes"
+        "my-list": "Mes Listes",
+        "connect": "Ce connecter"
     },
     "settings": {
         "dark-mode": "Mode sombre",
