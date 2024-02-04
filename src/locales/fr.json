@@ -7,7 +7,8 @@
         "news": "Actualités",
         "search": "Recherche",
         "top-100": "Top 100",
-        "notification": "Notification"
+        "notification": "Notification",
+        "my-list": "Mes Listes"
     },
     "settings": {
         "dark-mode": "Mode sombre",

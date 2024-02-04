@@ -2,6 +2,7 @@
     <div id="menu" class="menu">
         <MenuTop />
         <MenuCenter />
+        <MenuList />
         <MenuBottom />
     </div>
 </template>
@@ -9,6 +10,7 @@
 <script setup lang="ts">
 import MenuTop from "./menuTop/MenuTop.vue";
 import MenuCenter from "./menuCenter/MenuCenter.vue";
+import MenuList from "./menuList/MenuList.vue";
 import MenuBottom from "./MenuBottom.vue";
 </script>
 

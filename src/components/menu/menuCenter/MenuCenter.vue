@@ -22,6 +22,19 @@ const filteredRoutes = router.options.routes.filter((r) => r.meta?.menu);
 .menu-center {
     width: 100%;
     padding: 15px;
+    position: relative;
+}
+
+.menu-center::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(100% - 30px); /* 15px de chaque coté */
+    height: 1px;
+    background-color: #505050;
 }
 
 .menu-center ul {

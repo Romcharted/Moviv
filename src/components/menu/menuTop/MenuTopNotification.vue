@@ -39,5 +39,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--text-btn-color);
 }
 </style>

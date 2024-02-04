@@ -33,5 +33,6 @@ const props = defineProps(["routeConfig"]);
 .nav-item a.router-link-exact-active {
     background-color: var(--main-color);
     font-weight: 600;
+    color: var(--text-btn-color);
 }
 </style>
