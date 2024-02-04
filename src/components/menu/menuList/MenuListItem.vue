@@ -1,8 +1,8 @@
 <template>
-    <div :class="{ 'menu-list__item': true, isFirst: isFirst }">
+    <li :class="{ 'menu-list__item': true, isFirst: isFirst }">
         <span class="menu-list__item-before"></span>
         <router-link :to="generateRouteLink()">{{ name }}</router-link>
-    </div>
+    </li>
 </template>
 
 <script setup lang="ts">

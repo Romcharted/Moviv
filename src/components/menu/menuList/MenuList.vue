@@ -19,30 +19,38 @@
             </i>
         </div>
 
-        <div class="menu-list__items-container">
-            <template v-if="isConnected">
-                <MenuListItem
-                    v-for="(list, index) in lists"
-                    :key="index"
-                    :name="list.name"
-                    :link="'OneList'"
-                    :id="list.id"
-                    :isFirst="index === 0"
-                />
-            </template>
-            <template v-else>
-                <MenuListItem
-                    :name="$t('menu.connect')"
-                    link="LogIn"
-                    isFirst="true"
-                />
-            </template>
-        </div>
+        <ul class="menu-list__items-container">
+            <TransitionGroup
+                name="menu-list__items-container"
+                @before-enter="beforeEnter"
+                @enter="enter"
+                @leave="leave"
+            >
+                <template v-if="isExpanded && isConnected">
+                    <MenuListItem
+                        v-for="(list, index) in lists"
+                        :key="index"
+                        :name="list.name"
+                        :link="'OneList'"
+                        :id="list.id"
+                        :isFirst="index === 0"
+                    />
+                </template>
+                <template v-else-if="isExpanded">
+                    <MenuListItem
+                        :name="$t('menu.connect')"
+                        link="LogIn"
+                        isFirst="true"
+                    />
+                </template>
+            </TransitionGroup>
+        </ul>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { gsap } from "gsap";
 import MenuListItem from "./MenuListItem.vue";
 
 const isExpanded = ref(false);
@@ -60,6 +68,28 @@ lists.value = [
     { id: 7534, name: "List 2" },
     { id: 1404, name: "List 3" },
 ];
+
+const beforeEnter = (el: HTMLElement) => {
+    gsap.set(el, { opacity: 0, height: 0 });
+};
+
+const enter = (el: HTMLElement, done: any) => {
+    gsap.to(el, {
+        opacity: 1,
+        height: "1.6em",
+        stagger: 0.15,
+        onComplete: done,
+    });
+};
+
+const leave = (el: HTMLElement, done: any) => {
+    gsap.to(el, {
+        opacity: 0,
+        height: 0,
+        stagger: 0.15,
+        onComplete: done,
+    });
+};
 </script>
 
 <style>
@@ -132,5 +162,17 @@ lists.value = [
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
+
+    padding: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
 }
 </style>
