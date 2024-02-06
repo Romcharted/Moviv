@@ -67,6 +67,33 @@ lists.value = [
     { id: 1245, name: "List 1" },
     { id: 7534, name: "List 2" },
     { id: 1404, name: "List 3" },
+    { id: 1404, name: "List 4" },
+    { id: 1404, name: "List 5" },
+    { id: 1404, name: "List 6" },
+    { id: 1404, name: "List 7" },
+    { id: 1404, name: "List 8" },
+    { id: 1404, name: "List 9" },
+    { id: 1404, name: "List 10" },
+    { id: 1404, name: "List 11" },
+    { id: 1404, name: "List 12" },
+    { id: 1404, name: "List 13" },
+    { id: 1404, name: "List 14" },
+    { id: 1404, name: "List 15" },
+    { id: 1404, name: "List 16" },
+    { id: 1404, name: "List 17" },
+    { id: 1404, name: "List 18" },
+    { id: 1404, name: "List 19" },
+    { id: 1404, name: "List 20" },
+    { id: 1404, name: "List 21" },
+    { id: 1404, name: "List 22" },
+    { id: 1404, name: "List 23" },
+    { id: 1404, name: "List 24" },
+    { id: 1404, name: "List 25" },
+    { id: 1404, name: "List 26" },
+    { id: 1404, name: "List 27" },
+    { id: 1404, name: "List 28" },
+    { id: 1404, name: "List 29" },
+    { id: 1404, name: "List 30" },
 ];
 
 const BeforeEnter = (el: Element) => {
@@ -158,6 +185,7 @@ const Leave = (el: Element, done: any) => {
     opacity: 0;
     width: 100%;
     height: 100%;
+    max-height: 380px;
 
     display: flex;
     flex-direction: column;

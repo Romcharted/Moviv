@@ -82,7 +82,6 @@ onMounted(() => {
     flex-wrap: nowrap;
 
     width: 100%;
-    height: 100%;
     padding: 40px 15px 15px 15px;
 }
 
@@ -92,7 +91,7 @@ onMounted(() => {
     gap: 12px;
     width: 100%;
     transition: all 0.3s;
-    padding: 10px 15px;
+    padding: 10px 0px;
     border-radius: var(--border-radius);
 }
 

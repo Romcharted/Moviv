@@ -18,8 +18,10 @@
             @mouseleave="ToggleHoverMenu"
         >
             <MenuTop />
-            <MenuCenter />
-            <MenuList />
+            <div class="menu-link">
+                <MenuCenter />
+                <MenuList />
+            </div>
             <MenuBottom />
         </div>
     </div>
@@ -111,6 +113,7 @@ const ToggleHoverMenu = () => {
 
     width: 100%;
     height: 100vh;
+    max-height: 100vh;
 
     overflow: hidden;
     transition: all 0.3s;
@@ -139,6 +142,18 @@ const ToggleHoverMenu = () => {
 .menu-container img {
     margin-left: -4px;
     transition: all 0.3s;
+}
+
+.menu-link {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#menu.isHover .menu-link,
+#menu.isActive .menu-link {
+    overflow-y: auto;
 }
 
 /* =============== Menu Top =============== */
@@ -177,4 +192,11 @@ const ToggleHoverMenu = () => {
     opacity: 1;
 }
 /* =============== End Menu List =============== */
+
+/* ===============  Menu Bottom =============== */
+#menu.isHover .menu-bottom__item,
+#menu.isActive .menu-bottom__item {
+    padding: 10px 15px;
+}
+/* =============== End Menu Bottom =============== */
 </style>
