@@ -37,6 +37,11 @@ const generateRouteLink = () => {
     transition: all 0.3s;
 }
 
+.menu-list__item a:hover {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+}
+
 .menu-list__item a.router-link-exact-active {
     background-color: var(--main-color);
     font-weight: 600;

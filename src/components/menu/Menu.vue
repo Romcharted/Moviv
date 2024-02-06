@@ -4,8 +4,13 @@
         class="menu"
         :class="{ isActive: menuIsActive, isHover: menuIsHover }"
     >
-        <div class="menu-open-btn" @click="ToggleActiveMenu">
-            <i class="material-icons-outlined"> chevron_right </i>
+        <div
+            class="menu-open-btn"
+            @click="ToggleActiveMenu"
+            @mouseenter="ToggleHoverMenu"
+            @mouseleave="ToggleHoverMenu"
+        >
+            <i class="material-icons-outlined"> push_pin </i>
         </div>
         <div
             class="menu-container"
@@ -32,13 +37,13 @@ const menuIsHover = ref(false);
 const menuIsActive = ref(false);
 
 const ToggleActiveMenu = () => {
-    menuIsActive.value = menuIsActive.value ? false : true;
+    menuIsActive.value = !menuIsActive.value;
     menuIsHover.value = menuIsActive.value;
 };
 
 const ToggleHoverMenu = () => {
     if (!menuIsActive.value) {
-        menuIsHover.value = menuIsHover.value ? false : true;
+        menuIsHover.value = !menuIsHover.value;
     }
 };
 </script>
@@ -59,7 +64,7 @@ const ToggleHoverMenu = () => {
 
 .menu-open-btn {
     position: absolute;
-    top: 128px;
+    top: 138px;
     right: -23px;
 
     display: flex;
@@ -73,17 +78,23 @@ const ToggleHoverMenu = () => {
     background-color: var(--text-color);
     z-index: 99;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .menu-open-btn i {
     color: var(--secondary-color);
-    font-size: 34px;
+    font-size: 30px;
     transition: all 0.3s;
 }
 
-#menu.isHover .menu-open-btn i,
+.menu-open-btn:hover,
+#menu.isActive .menu-open-btn {
+    background-color: var(--main-color);
+}
+
+.menu-open-btn:hover i,
 #menu.isActive .menu-open-btn i {
-    transform: scaleX(-1);
+    color: var(--text-color);
 }
 
 .menu-container {
@@ -134,7 +145,7 @@ const ToggleHoverMenu = () => {
 /* =============== Menu Top =============== */
 #menu.isHover .menu-top__notification,
 #menu.isActive .menu-top__notification {
-    padding: 0px 15px;
+    padding: 5px 15px;
 }
 
 #menu.isHover .menu-top__profile,

@@ -18,11 +18,18 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    border-radius: var(--border-radius);
+    padding: 5px 0;
 
     width: 100%;
     height: 100%;
 
     transition: all 0.3s;
+}
+
+.menu-top__notification:hover {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
 }
 
 .menu-top__notification div {

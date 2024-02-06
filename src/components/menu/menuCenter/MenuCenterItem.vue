@@ -31,6 +31,11 @@ const props = defineProps(["routeConfig"]);
     transition: all 0.3s;
 }
 
+.nav-item a:hover {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+}
+
 .nav-item a.router-link-exact-active {
     background-color: var(--main-color);
     font-weight: 600;

@@ -80,17 +80,25 @@ onMounted(() => {
     justify-content: flex-end;
     align-items: flex-start;
     flex-wrap: nowrap;
-    gap: 20px;
 
     width: 100%;
     height: 100%;
-    padding: 15px 15px 30px 15px;
+    padding: 40px 15px 15px 15px;
 }
 
 .menu-bottom__item {
     display: flex;
     align-items: center;
     gap: 12px;
+    width: 100%;
+    transition: all 0.3s;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+}
+
+.menu-bottom__item:hover {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
 }
 
 .part__dark-mode {
