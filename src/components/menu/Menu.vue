@@ -38,7 +38,6 @@ const menuIsActive = ref(false);
 
 const ToggleActiveMenu = () => {
     menuIsActive.value = !menuIsActive.value;
-    menuIsHover.value = menuIsActive.value;
 };
 
 const ToggleHoverMenu = () => {
