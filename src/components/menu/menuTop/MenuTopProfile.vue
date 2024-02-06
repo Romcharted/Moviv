@@ -1,6 +1,6 @@
 <template>
     <div class="menu-top__profile">
-        <img src="https://fakeimg.pl/50x50/" alt="Profile image" />
+        <img src="https://fakeimg.pl/40x40/" alt="Profile image" />
         <span>Profile Name</span>
     </div>
 </template>
@@ -21,9 +21,16 @@
 
     width: 100%;
     height: 100%;
+
+    transition: all 0.3s;
 }
 
 .menu-top__profile img {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
     border-radius: var(--border-radius);
 }
 </style>

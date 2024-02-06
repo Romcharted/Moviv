@@ -69,11 +69,11 @@ lists.value = [
     { id: 1404, name: "List 3" },
 ];
 
-const beforeEnter = (el: HTMLElement) => {
+const beforeEnter = (el: Element) => {
     gsap.set(el, { opacity: 0, height: 0 });
 };
 
-const enter = (el: HTMLElement, done: any) => {
+const enter = (el: Element, done: any) => {
     gsap.to(el, {
         opacity: 1,
         height: "1.6em",
@@ -82,7 +82,7 @@ const enter = (el: HTMLElement, done: any) => {
     });
 };
 
-const leave = (el: HTMLElement, done: any) => {
+const leave = (el: Element, done: any) => {
     gsap.to(el, {
         opacity: 0,
         height: 0,
@@ -113,7 +113,6 @@ const leave = (el: HTMLElement, done: any) => {
 
     width: 100%;
     background-color: rgba(255, 255, 255, 0.1);
-    padding-left: 15px;
     border-radius: var(--border-radius);
     cursor: pointer;
 
@@ -145,6 +144,13 @@ const leave = (el: HTMLElement, done: any) => {
     flex-wrap: nowrap;
 
     padding: 10px 15px 10px 0;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#menu:hover .menu-list__title .menu-list__title-chevron {
+    opacity: 1;
 }
 
 .menu-list__title.isExpanded .menu-list__title-chevron {
@@ -153,6 +159,7 @@ const leave = (el: HTMLElement, done: any) => {
 
 /* ================= List Container ================= */
 .menu-list__items-container {
+    opacity: 0;
     width: 100%;
     height: 100%;
 
@@ -164,6 +171,11 @@ const leave = (el: HTMLElement, done: any) => {
     gap: 10px;
 
     padding: 0;
+    transition: opacity 0.3s;
+}
+
+#menu:hover .menu-list__items-container {
+    opacity: 1;
 }
 
 .list-enter-active,

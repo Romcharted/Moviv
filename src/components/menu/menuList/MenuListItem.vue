@@ -32,7 +32,7 @@ const generateRouteLink = () => {
 
 .menu-list__item a {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     border-radius: var(--border-radius);
     transition: all 0.3s;
 }

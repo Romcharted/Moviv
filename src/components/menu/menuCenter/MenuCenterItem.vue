@@ -26,9 +26,8 @@ const props = defineProps(["routeConfig"]);
     justify-content: flex-start;
     gap: 12px;
 
+    padding: 10px 0;
     border-radius: var(--border-radius);
-    padding: 10px 15px;
-
     transition: all 0.3s;
 }
 
