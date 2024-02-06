@@ -13,7 +13,7 @@
             </router-link>
             <i
                 class="material-icons-outlined menu-list__title-chevron"
-                @click="toggleExpansion"
+                @click="ToggleExpansion"
             >
                 expand_more
             </i>
@@ -22,9 +22,9 @@
         <ul class="menu-list__items-container">
             <TransitionGroup
                 name="menu-list__items-container"
-                @before-enter="beforeEnter"
-                @enter="enter"
-                @leave="leave"
+                @before-enter="BeforeEnter"
+                @enter="Enter"
+                @leave="Leave"
             >
                 <template v-if="isExpanded && isConnected">
                     <MenuListItem
@@ -55,7 +55,7 @@ import MenuListItem from "./MenuListItem.vue";
 
 const isExpanded = ref(false);
 
-const toggleExpansion = () => {
+const ToggleExpansion = () => {
     isExpanded.value = !isExpanded.value;
 };
 
@@ -69,11 +69,11 @@ lists.value = [
     { id: 1404, name: "List 3" },
 ];
 
-const beforeEnter = (el: Element) => {
+const BeforeEnter = (el: Element) => {
     gsap.set(el, { opacity: 0, height: 0 });
 };
 
-const enter = (el: Element, done: any) => {
+const Enter = (el: Element, done: any) => {
     gsap.to(el, {
         opacity: 1,
         height: "1.6em",
@@ -82,7 +82,7 @@ const enter = (el: Element, done: any) => {
     });
 };
 
-const leave = (el: Element, done: any) => {
+const Leave = (el: Element, done: any) => {
     gsap.to(el, {
         opacity: 0,
         height: 0,
@@ -149,10 +149,6 @@ const leave = (el: Element, done: any) => {
     transition: opacity 0.3s;
 }
 
-#menu:hover .menu-list__title .menu-list__title-chevron {
-    opacity: 1;
-}
-
 .menu-list__title.isExpanded .menu-list__title-chevron {
     transform: scaleY(-1);
 }
@@ -172,10 +168,6 @@ const leave = (el: Element, done: any) => {
 
     padding: 0;
     transition: opacity 0.3s;
-}
-
-#menu:hover .menu-list__items-container {
-    opacity: 1;
 }
 
 .list-enter-active,

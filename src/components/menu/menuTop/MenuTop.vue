@@ -20,7 +20,7 @@ import MenuTopNotification from "./MenuTopNotification.vue";
     gap: 15px;
 
     width: 100%;
-    padding: 30px 15px 20px 15px;
+    padding: 30px 15px 40px 15px;
     border-bottom: 1px solid #505050;
 }
 </style>

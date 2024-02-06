@@ -21,7 +21,7 @@ const filteredRoutes = router.options.routes.filter((r) => r.meta?.menu);
 <style>
 .menu-center {
     width: 100%;
-    padding: 15px;
+    padding: 40px 15px 15px 15px;
     position: relative;
 }
 
