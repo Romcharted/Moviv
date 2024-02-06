@@ -12,6 +12,9 @@
         >
             <i class="material-icons-outlined"> push_pin </i>
         </div>
+
+        <MenuMobile @menu-toggled="updateMenuIsActive" />
+
         <div
             class="menu-container"
             @mouseenter="ToggleHoverMenu"
@@ -28,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import MenuMobile from "./MenuMobile.vue";
 import MenuTop from "./menuTop/MenuTop.vue";
 import MenuCenter from "./menuCenter/MenuCenter.vue";
 import MenuList from "./menuList/MenuList.vue";
@@ -47,6 +51,10 @@ const ToggleHoverMenu = () => {
         menuIsHover.value = !menuIsHover.value;
     }
 };
+
+const updateMenuIsActive = (isActive: boolean) => {
+    menuIsActive.value = isActive;
+};
 </script>
 
 <style>
@@ -56,11 +64,7 @@ const ToggleHoverMenu = () => {
     left: 0;
     width: 64px;
     transition: all 0.3s;
-}
-
-#menu.isHover,
-#menu.isActive {
-    width: 260px;
+    z-index: 98;
 }
 
 .menu-open-btn {
@@ -119,6 +123,46 @@ const ToggleHoverMenu = () => {
     transition: all 0.3s;
 }
 
+/* ============================== Menu Link ============================== */
+.menu-link {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-link::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre de défilement */
+}
+
+.menu-link::-webkit-scrollbar-thumb {
+    background-color: var(
+        --main-color
+    ); /* Couleur de fond de la poignée de défilement */
+    border-radius: 5px; /* Bordure de la poignée de défilement */
+}
+
+.menu-link::-webkit-scrollbar-track {
+    background-color: var(
+        --secondary-color
+    ); /* Couleur de fond de la piste de défilement */
+}
+
+/* Pour cacher la barre de défilement horizontale */
+.menu-link::-webkit-scrollbar-horizontal {
+    display: none;
+}
+
+#menu.isHover,
+#menu.isActive {
+    width: 260px;
+}
+
+#menu.isHover .menu-link,
+#menu.isActive .menu-link {
+    overflow-y: auto;
+}
+
 .menu-container span {
     opacity: 0;
     transition: opacity 0.3s;
@@ -143,42 +187,6 @@ const ToggleHoverMenu = () => {
     margin-left: -4px;
     transition: all 0.3s;
 }
-
-/* ============================== Menu Link ============================== */
-.menu-link {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    width: 100%;
-    height: 100%;
-}
-
-#menu.isHover .menu-link,
-#menu.isActive .menu-link {
-    overflow-y: auto;
-}
-
-.menu-link::-webkit-scrollbar {
-    width: 10px; /* Largeur de la barre de défilement */
-}
-
-.menu-link::-webkit-scrollbar-thumb {
-    background-color: var(
-        --main-color
-    ); /* Couleur de fond de la poignée de défilement */
-    border-radius: 5px; /* Bordure de la poignée de défilement */
-}
-
-.menu-link::-webkit-scrollbar-track {
-    background-color: var(
-        --secondary-color
-    ); /* Couleur de fond de la piste de défilement */
-}
-
-/* Pour cacher la barre de défilement horizontale */
-.menu-link::-webkit-scrollbar-horizontal {
-    display: none;
-}
-/* ============================== End Menu Link ============================== */
 
 /* =============== Menu Top =============== */
 #menu.isHover .menu-top__notification,
@@ -223,4 +231,33 @@ const ToggleHoverMenu = () => {
     padding: 10px 15px;
 }
 /* =============== End Menu Bottom =============== */
+
+/* ============================== End Menu Link ============================== */
+@media only screen and (max-width: 764px) {
+    .menu-open-btn {
+        display: none;
+    }
+
+    #menu {
+        width: 100%;
+    }
+
+    #menu.isHover,
+    #menu.isActive {
+        width: 100%;
+    }
+
+    #menu .menu-container {
+        width: 0;
+        height: calc(100vh - 100px);
+    }
+
+    #menu.isActive .menu-container {
+        width: 100% !important;
+    }
+
+    .menu-bottom {
+        border-top: 1px solid #505050;
+    }
+}
 </style>
