@@ -144,6 +144,7 @@ const ToggleHoverMenu = () => {
     transition: all 0.3s;
 }
 
+/* ============================== Menu Link ============================== */
 .menu-link {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -155,6 +156,29 @@ const ToggleHoverMenu = () => {
 #menu.isActive .menu-link {
     overflow-y: auto;
 }
+
+.menu-link::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre de défilement */
+}
+
+.menu-link::-webkit-scrollbar-thumb {
+    background-color: var(
+        --main-color
+    ); /* Couleur de fond de la poignée de défilement */
+    border-radius: 5px; /* Bordure de la poignée de défilement */
+}
+
+.menu-link::-webkit-scrollbar-track {
+    background-color: var(
+        --secondary-color
+    ); /* Couleur de fond de la piste de défilement */
+}
+
+/* Pour cacher la barre de défilement horizontale */
+.menu-link::-webkit-scrollbar-horizontal {
+    display: none;
+}
+/* ============================== End Menu Link ============================== */
 
 /* =============== Menu Top =============== */
 #menu.isHover .menu-top__notification,
