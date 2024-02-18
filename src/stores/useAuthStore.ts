@@ -19,13 +19,21 @@ const useAuthStore = defineStore({
     },
     actions: {
         async SignIn(this): Promise<void> {
-            this.currentUser = await firebaseManager.SignInWithGoogle();
+            await firebaseManager.SignInWithGoogle();
         },
         async SignOut(this): Promise<void> {
             await firebaseManager.SignOut();
             this.currentUser = null;
         },
+        SetUser(user: User | null): void {
+            this.currentUser = user;
+        },
     },
+});
+
+// Enregistrer un callback pour mettre à jour l'utilisateur authentifié
+firebaseManager.registerAuthStateChangedCallback((user) => {
+    useAuthStore().currentUser = user;
 });
 
 export default useAuthStore;
