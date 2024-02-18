@@ -10,7 +10,7 @@ import {
     getAdditionalUserInfo,
     onAuthStateChanged,
     setPersistence,
-    browserSessionPersistence,
+    browserLocalPersistence,
 } from "firebase/auth";
 
 class FirebaseManager {
@@ -21,6 +21,8 @@ class FirebaseManager {
     private credential: OAuthCredential | null = null;
     private token: string | null = null;
     private user: User | null = null;
+
+    private authStateChangedCallbacks: ((user: User | null) => void)[] = [];
 
     public GetApp(): FirebaseApp {
         return this.app;
@@ -48,20 +50,21 @@ class FirebaseManager {
         // Écouteur d'état d'authentification
         onAuthStateChanged(this.auth, (user) => {
             this.user = user;
+            this.notifyAuthStateChanged(this.user);
         });
     }
 
-    public async SignInWithGoogle(): Promise<User | null> {
+    public async SignInWithGoogle(): Promise<void> {
         try {
+            // Définir la persistance locale avant la connexion
+            await setPersistence(this.auth, browserLocalPersistence);
+
             const result = await signInWithPopup(this.auth, this.provider);
             this.credential = GoogleAuthProvider.credentialFromResult(result);
             const token = this.credential?.accessToken;
             this.user = result.user;
-            console.log(getAdditionalUserInfo(result));
-            return this.user;
         } catch (error) {
             console.error("Error signing in with Google:", error);
-            return null;
         }
     }
 
@@ -76,6 +79,18 @@ class FirebaseManager {
 
     public IsAuthenticated(): boolean {
         return this.user !== null;
+    }
+
+    // Méthode pour enregistrer les callbacks d'état d'authentification
+    public registerAuthStateChangedCallback(
+        callback: (user: User | null) => void
+    ): void {
+        this.authStateChangedCallbacks.push(callback);
+    }
+
+    // Méthode pour notifier tous les callbacks enregistrés
+    private notifyAuthStateChanged(user: User | null): void {
+        this.authStateChangedCallbacks.forEach((callback) => callback(user));
     }
 }
 
