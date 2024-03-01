@@ -18,17 +18,17 @@ class Movie {
     private posterPath: string = "";
     private productionCompanies: number[] = [];
     private genres: Genre[] = [];
+    private userAddDate: Date = new Date();
 
     constructor(data: any) {
         // Filtre les clés de l'objet data pour correspondre aux propriétés de la classe Movie
         const keys = Object.keys(data).filter((key) => key in this);
 
         keys.forEach((key: any) => {
-            // Si la clé est "release_date", conversion de la valeur en objet Date
-            if (key === "release_date") {
-                this.releaseDate = new Date(data[key]);
+            if (key === "release_date" || key === "user_add_date") {
+                (this as any)[key] = new Date(data[key]);
             } else {
-                // Sinon, affectation de la valeur à la propriété correspondante
+                // Affectation de la valeur à la propriété correspondante
                 (this as any)[key] = data[key];
             }
         });
@@ -160,6 +160,14 @@ class Movie {
 
     public set Genres(value: Genre[]) {
         this.genres = value;
+    }
+
+    public get UserAddDate(): Date {
+        return this.userAddDate;
+    }
+
+    public set UserAddDate(value: Date) {
+        this.userAddDate = value;
     }
 }
 
