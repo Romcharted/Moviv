@@ -78,5 +78,18 @@ const dataTest = {
 };
 
 const movie = new Movie(dataTest);
-console.log(movie);
+
+import TMDB from "@/services/TmdbAPI";
+const tmdb = new TMDB();
+//const movieAPI = await tmdb.GetMovieDetails(634492);
+
+/* const movieList = await tmdb.GetPopularMovies();
+movieList.Movies.forEach((movie) => {
+    console.log("Title:", movie.Title);
+    console.log("Overview:", movie.Overview);
+    console.log("Release Date:", movie.ReleaseDate);
+    console.log("Popularity:", movie.Popularity);
+    console.log("Vote Average:", movie.VoteAverage);
+    console.log("-------------------------------------------");
+}); */
 </script>

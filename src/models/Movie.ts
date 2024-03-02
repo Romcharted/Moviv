@@ -21,17 +21,24 @@ class Movie {
     private userAddDate: Date = new Date();
 
     constructor(data: any) {
-        // Filtre les clés de l'objet data pour correspondre aux propriétés de la classe Movie
-        const keys = Object.keys(data).filter((key) => key in this);
-
-        keys.forEach((key: any) => {
-            if (key === "release_date" || key === "user_add_date") {
-                (this as any)[key] = new Date(data[key]);
-            } else {
-                // Affectation de la valeur à la propriété correspondante
-                (this as any)[key] = data[key];
-            }
-        });
+        this.id = data.id || 0;
+        this.title = data.title || "";
+        this.overview = data.overview || "";
+        this.status = data.status || "";
+        this.voteCount = data.vote_count || 0;
+        this.voteAverage = data.vote_average || 0;
+        this.popularity = data.popularity || 0;
+        this.runtime = data.runtime || 0;
+        this.budget = data.budget || 0;
+        this.revenue = data.revenue || 0;
+        this.originalLanguage = data.original_language || "";
+        this.releaseDate = data.release_date
+            ? new Date(data.release_date)
+            : new Date();
+        this.backdropPath = data.backdrop_path || "";
+        this.posterPath = data.poster_path || "";
+        this.productionCompanies = data.production_companies || [];
+        this.genres = data.genres || [];
     }
 
     public get Id(): number {

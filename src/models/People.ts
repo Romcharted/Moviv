@@ -21,21 +21,17 @@ class People {
     private profilePath: string = "";
 
     constructor(data: any) {
-        const keys = Object.keys(data).filter((key) => key in this);
-
-        keys.forEach((key: any) => {
-            if (key === "birthday" || key === "deathday") {
-                // Converti la date au format Date
-                (this as any)[key] = new Date(data[key]);
-            } else if (key === "gender") {
-                // Vérifie que la valeur correspond à une des valeurs de l'énumération
-                if (Object.values(GenderPeople).includes(data[key])) {
-                    (this as any)[key] = data[key];
-                }
-            } else {
-                (this as any)[key] = data[key];
-            }
-        });
+        this.id = data.id || 0;
+        this.name = data.name || "";
+        this.birthday = new Date(data.birthday) || new Date();
+        this.deathday = data.deathday ? new Date(data.deathday) : null;
+        this.biography = data.biography || "";
+        this.placeOfBirth = data.place_of_birth || "";
+        this.popularity = data.popularity || 0;
+        this.gender = Object.values(GenderPeople).includes(data.gender)
+            ? data.gender
+            : GenderPeople.NotSpecified;
+        this.profilePath = data.profile_path || "";
     }
 
     public get Id(): number {

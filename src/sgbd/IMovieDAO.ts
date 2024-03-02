@@ -1,4 +1,5 @@
 import Movie from "@/models/Movie";
+import MovieList from "@/models/MovieList";
 
 /**
  * Interface pour accéder aux données des films
@@ -14,23 +15,23 @@ interface IMovieDAO {
     /**
      * Méthode pour récupérer la liste des films populaires
      */
-    GetPopularMovies(): Promise<Movie[]>;
+    GetPopularMovies(): Promise<MovieList>;
 
     /**
      * Méthode pour rechercher des films par mot-clé
      * @param query
      */
-    SearchMovies(query: string): Promise<Movie[]>;
+    SearchMovies(query: string): Promise<MovieList>;
 
     /**
      * Méthode pour récupérer les 100 films les plus populaires
      */
-    GetTopRatedMovies(): Promise<Movie[]>;
+    GetTopRatedMovies(): Promise<MovieList>;
 
     /**
      * Méthode pour récupérer les films qui vont bientôt sortir
      */
-    GetUpComingMovies(): Promise<Movie[]>;
+    GetUpComingMovies(): Promise<MovieList>;
 }
 
 export default IMovieDAO;

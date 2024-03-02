@@ -22,7 +22,11 @@ class MovieList {
         return this.name;
     }
 
-    public SetMovies(movies: Movie[]): void {
+    public get Movies(): Movie[] {
+        return this.movies;
+    }
+
+    public set Movies(movies: Movie[]) {
         this.movies = movies;
     }
 
@@ -31,7 +35,7 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    sortMoviesByTitle(ascending: boolean = true): void {
+    SortMoviesByTitle(ascending: boolean = true): void {
         this.movies.sort((a, b) => {
             const compare = a.Title.localeCompare(b.Title);
             return ascending ? compare : -compare;
@@ -43,7 +47,7 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    sortMoviesByPopularity(ascending: boolean = false): void {
+    SortMoviesByPopularity(ascending: boolean = false): void {
         this.movies.sort((a, b) => {
             const compare = b.Popularity - a.Popularity;
             return ascending ? compare : -compare;
@@ -55,7 +59,7 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    sortMoviesByVoteAverage(ascending: boolean = false): void {
+    SortMoviesByVoteAverage(ascending: boolean = false): void {
         this.movies.sort((a, b) => {
             const compare = b.VoteAverage - a.VoteAverage;
             return ascending ? compare : -compare;
@@ -67,7 +71,7 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    sortMoviesByReleaseDate(ascending: boolean = true): void {
+    SortMoviesByReleaseDate(ascending: boolean = true): void {
         this.movies.sort((a, b) => {
             const compare = a.ReleaseDate.getTime() - b.ReleaseDate.getTime();
             return ascending ? compare : -compare;
@@ -79,7 +83,7 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    sortMoviesByUserAddDate(ascending: boolean = true): void {
+    SortMoviesByUserAddDate(ascending: boolean = true): void {
         this.movies.sort((a, b) => {
             const compare = a.UserAddDate.getTime() - b.UserAddDate.getTime();
             return ascending ? compare : -compare;
