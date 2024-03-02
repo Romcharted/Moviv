@@ -12,7 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import useAuthStore from "@/stores/useAuthStore";
+import UseAuthStore from "@/stores/UseAuthStore";
 
-const authStore = useAuthStore();
+const authStore = UseAuthStore();
 </script>
+@/stores/UseAuthStore

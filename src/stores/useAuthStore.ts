@@ -8,7 +8,8 @@ interface AuthState {
 
 const firebaseManager = new FirebaseManager();
 
-const useAuthStore = defineStore({
+// Mise en place du store
+const UseAuthStore = defineStore({
     id: "firebaseManager",
     state: (): AuthState => ({
         currentUser: null,
@@ -31,9 +32,9 @@ const useAuthStore = defineStore({
     },
 });
 
-// Enregistrer un callback pour mettre à jour l'utilisateur authentifié
+// Enregistre un callback pour mettre à jour l'utilisateur authentifié
 firebaseManager.registerAuthStateChangedCallback((user) => {
-    useAuthStore().currentUser = user;
+    UseAuthStore().currentUser = user;
 });
 
-export default useAuthStore;
+export default UseAuthStore;
