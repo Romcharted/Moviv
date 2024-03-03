@@ -1,3 +1,5 @@
+import Genre from "@/models/Genre";
+
 /**
  * Représente un film
  */
@@ -19,6 +21,7 @@ class Movie {
     private productionCompanies: number[] = [];
     private genres: Genre[] = [];
     private userAddDate: Date = new Date();
+    private imgUrl = "https://image.tmdb.org/t/p/original/";
 
     constructor(data: any) {
         this.id = data.id || 0;
@@ -35,8 +38,8 @@ class Movie {
         this.releaseDate = data.release_date
             ? new Date(data.release_date)
             : new Date();
-        this.backdropPath = data.backdrop_path || "";
-        this.posterPath = data.poster_path || "";
+        this.backdropPath = this.imgUrl + data.backdrop_path || "";
+        this.posterPath = this.imgUrl + data.poster_path || "";
         this.productionCompanies = data.production_companies || [];
         this.genres = data.genres || [];
     }
@@ -142,7 +145,7 @@ class Movie {
     }
 
     public set BackdropPath(value: string) {
-        this.backdropPath = value;
+        this.backdropPath = this.imgUrl + value;
     }
 
     public get PosterPath(): string {
@@ -150,7 +153,7 @@ class Movie {
     }
 
     public set PosterPath(value: string) {
-        this.posterPath = value;
+        this.posterPath = this.imgUrl + value;
     }
 
     public get ProductionCompanies(): number[] {

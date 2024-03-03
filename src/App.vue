@@ -3,7 +3,9 @@
 
     <Menu />
 
-    <router-view class="main-content" />
+    <div id="main-content">
+        <router-view class="main-content-container" />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -12,8 +14,13 @@ import { RouterView } from "vue-router";
 </script>
 
 <style scoped>
-.main-content {
+#main-content {
     width: 100%;
-    padding-left: 260px;
+    transition: all 0.3s;
+    padding: 0px 0px 0px 60px;
+}
+
+.main-content-container {
+    width: 100%;
 }
 </style>

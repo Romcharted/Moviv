@@ -28,7 +28,7 @@
 }
 
 .menu-top__notification:hover {
-    background-color: var(--text-color);
+    background: var(--text-color);
     color: var(--secondary-color);
 }
 

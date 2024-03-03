@@ -6,10 +6,12 @@ import MovieList from "@/models/MovieList";
 class TMDB {
     private apiKey: string;
     private baseUrl: string;
+    private imgUrl: string;
 
     constructor() {
         this.apiKey = import.meta.env.VITE_TMDB_API_KEY || "";
         this.baseUrl = "https://api.themoviedb.org/3";
+        this.imgUrl = "https://image.tmdb.org/t/p/original/";
     }
 
     async GetMovieDetails(movieId: number): Promise<Movie> {

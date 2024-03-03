@@ -24,15 +24,6 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     {
-        path: "/movie",
-        component: Movie,
-        name: "Movie",
-        meta: {
-            menu: "movie",
-            icon: "movie",
-        },
-    },
-    {
         path: "/search",
         component: Search,
         name: "Search",
@@ -101,6 +92,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "/list/:id",
         component: OneList,
         name: "OneList",
+    },
+    {
+        path: "/movie/:id",
+        component: Movie,
+        name: "Movie",
     },
     {
         path: "/:catchAll(.*)",

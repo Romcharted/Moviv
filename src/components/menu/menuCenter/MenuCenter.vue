@@ -34,7 +34,7 @@ const filteredRoutes = router.options.routes.filter((r) => r.meta?.menu);
 
     width: calc(100% - 30px); /* 15px de chaque coté */
     height: 1px;
-    background-color: #505050;
+    background: #505050;
 }
 
 .menu-center ul {

@@ -139,7 +139,7 @@ const Leave = (el: Element, done: any) => {
     align-items: center;
 
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     cursor: pointer;
 
@@ -148,8 +148,15 @@ const Leave = (el: Element, done: any) => {
 
 .menu-list__title.isExpanded,
 .menu-list__title.router-link-exact-active {
-    background-color: var(--main-color);
+    background: var(--main-color);
+    background-size: 150% auto;
+    transition: 0.5s;
     color: var(--text-btn-color);
+}
+
+.menu-list__title.isExpanded:hover,
+.menu-list__title.router-link-exact-active:hover {
+    background-position: right center;
 }
 
 .menu-list__title .menu-list__title-text {

@@ -10,19 +10,21 @@ class Genre {
         this._name = name;
     }
 
-    public get Id(): number {
+    public get id(): number {
         return this._id;
     }
 
-    public set Id(value: number) {
+    public set id(value: number) {
         this._id = value;
     }
 
-    public get Name(): string {
+    public get name(): string {
         return this._name;
     }
 
-    public set Name(value: string) {
+    public set name(value: string) {
         this._name = value;
     }
 }
+
+export default Genre;

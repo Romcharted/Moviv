@@ -38,22 +38,40 @@ import MenuList from "./menuList/MenuList.vue";
 import MenuBottom from "./MenuBottom.vue";
 
 import { ref } from "vue";
+import router from "@/routes/routes";
 
 const menuIsHover = ref(false);
 const menuIsActive = ref(false);
 
+const updateMainContentPadding = (forceLargePadding: boolean = false) => {
+    const mainContent = document.getElementById("main-content");
+
+    if (!mainContent) return;
+    if (forceLargePadding) {
+        mainContent.style.padding = "0px 0px 0px 260px";
+    } else {
+        mainContent.style.padding =
+            menuIsActive.value || menuIsHover.value
+                ? "0px 0px 0px 260px"
+                : "0px 0px 0px 60px";
+    }
+};
+
 const ToggleActiveMenu = () => {
     menuIsActive.value = !menuIsActive.value;
+    updateMainContentPadding();
 };
 
 const ToggleHoverMenu = () => {
     if (!menuIsActive.value) {
         menuIsHover.value = !menuIsHover.value;
+        updateMainContentPadding();
     }
 };
 
 const updateMenuIsActive = (isActive: boolean) => {
     menuIsActive.value = isActive;
+    updateMainContentPadding();
 };
 </script>
 
@@ -80,7 +98,7 @@ const updateMenuIsActive = (isActive: boolean) => {
     width: 46px;
     height: 46px;
 
-    background-color: var(--text-color);
+    background: var(--text-color);
     z-index: 99;
     cursor: pointer;
     transition: all 0.3s;
@@ -94,7 +112,7 @@ const updateMenuIsActive = (isActive: boolean) => {
 
 .menu-open-btn:hover,
 #menu.isActive .menu-open-btn {
-    background-color: var(--main-color);
+    background: var(--main-color);
 }
 
 .menu-open-btn:hover i,
@@ -104,9 +122,9 @@ const updateMenuIsActive = (isActive: boolean) => {
 
 .menu-container {
     font-family: "Noto Serif", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-color);
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
     text-wrap: nowrap;
 
     display: flex;
@@ -136,14 +154,14 @@ const updateMenuIsActive = (isActive: boolean) => {
 }
 
 .menu-link::-webkit-scrollbar-thumb {
-    background-color: var(
+    background: var(
         --main-color
     ); /* Couleur de fond de la poignée de défilement */
     border-radius: 5px; /* Bordure de la poignée de défilement */
 }
 
 .menu-link::-webkit-scrollbar-track {
-    background-color: var(
+    background: var(
         --secondary-color
     ); /* Couleur de fond de la piste de défilement */
 }

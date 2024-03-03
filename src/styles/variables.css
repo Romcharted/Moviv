@@ -15,20 +15,22 @@
 }
 
 :root {
-    --main-color: #6324eb;
+    --main-color: -moz-linear-gradient(to right, #ea5eda, #ff5d34);
+    --main-color: -webkit-linear-gradient(to right, #ea5eda, #ff5d34);
+    --main-color: linear-gradient(to right, #ea5eda, #ff5d34);
     --border-radius: 4px;
+    --text-btn-color: #2d2842;
+    --text-color-light: #fefcfd;
 }
 
 :root.light-theme {
     --secondary-color: #ececec;
     --background-color: #f7f7f7;
     --text-color: #292929;
-    --text-btn-color: #fefcfd;
 }
 
 :root.dark-theme {
     --secondary-color: #171719;
     --background-color: #0f0f0f;
     --text-color: #fefcfd;
-    --text-btn-color: #fefcfd;
 }

@@ -38,14 +38,20 @@ const generateRouteLink = () => {
 }
 
 .menu-list__item a:hover {
-    background-color: var(--text-color);
+    background: var(--text-color);
     color: var(--secondary-color);
 }
 
 .menu-list__item a.router-link-exact-active {
-    background-color: var(--main-color);
+    background: var(--main-color);
+    background-size: 150% auto;
+    transition: 0.5s;
     font-weight: 600;
     color: var(--text-btn-color);
+}
+
+.menu-list__item a.router-link-exact-active:hover {
+    background-position: right center;
 }
 
 .menu-list__item-before {
@@ -61,7 +67,7 @@ const generateRouteLink = () => {
     top: -30px;
     width: 2px;
     height: calc(50% + 30px);
-    background-color: var(--text-color);
+    background: var(--text-color);
 }
 .menu-list__item.isFirst .menu-list__item-before::before {
     top: -5px;
@@ -77,6 +83,6 @@ const generateRouteLink = () => {
 
     width: 35%;
     height: 2px;
-    background-color: var(--text-color);
+    background: var(--text-color);
 }
 </style>

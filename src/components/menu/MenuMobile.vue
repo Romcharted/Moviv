@@ -31,7 +31,7 @@ const toggleMenu = () => {
 .menu-mobile {
     width: 100%;
     height: 100px;
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
 
     display: none;
     align-items: center;

@@ -9,9 +9,17 @@
             <span>Settings</span>
         </router-link>
 
-        <div class="menu-bottom__item">
+        <div v-if="authStore.IsLoggedIn" class="menu-bottom__item">
             <i class="material-icons-outlined"> logout </i>
-            <span>{{ $t("settings.logout") }}</span>
+            <span @click="authStore.SignOut()" class="menu-auth">
+                {{ $t("settings.logout") }}
+            </span>
+        </div>
+        <div v-else class="menu-bottom__item">
+            <i class="material-icons-outlined"> logout </i>
+            <span @click="authStore.SignIn()">
+                {{ $t("settings.sign-in") }}
+            </span>
         </div>
 
         <div class="menu-bottom__item part__dark-mode">
@@ -35,6 +43,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import UseAuthStore from "@/stores/useAuthStore";
+
+const authStore = UseAuthStore();
 
 // Fonction pour définir le thème et mettre à jour
 const setTheme = (theme: string) => {
@@ -96,7 +107,7 @@ onMounted(() => {
 }
 
 .menu-bottom__item:hover {
-    background-color: var(--text-color);
+    background: var(--text-color);
     color: var(--secondary-color);
 }
 
@@ -109,6 +120,10 @@ onMounted(() => {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.menu-auth {
+    cursor: pointer;
 }
 
 /* ====================== Toggle ====================== */
@@ -137,14 +152,14 @@ onMounted(() => {
 }
 
 .menu-bottom__item__toggle-container #switch-theme:checked + label {
-    background-color: var(--colorChecked);
+    background: var(--colorChecked);
 }
 
 .menu-bottom__item__toggle-container label {
     display: block;
     width: var(--widthLabel);
     height: var(--heightLabel);
-    background-color: var(--colorDefault);
+    background: var(--colorDefault);
     border-radius: var(--sizeToggle);
     cursor: pointer;
     transition: 0.3s;
@@ -156,7 +171,7 @@ onMounted(() => {
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    background-color: var(--colorCircle);
+    background: var(--colorCircle);
     width: var(--sizeToggle);
     height: var(--sizeToggle);
     border-radius: var(--sizeToggle);
