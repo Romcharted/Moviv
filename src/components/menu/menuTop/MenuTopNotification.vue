@@ -48,6 +48,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-btn-color);
+    color: var(--text-color-light);
 }
 </style>

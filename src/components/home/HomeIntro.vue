@@ -1,12 +1,14 @@
 <template>
     <div class="home-intro">
         <MovieBanner :movie="movie" />
+        <HomeSliderPopularNow />
     </div>
 </template>
 
 <script setup lang="ts">
 import MovieBanner from "@/components/movie/MovieBanner.vue";
 import Movie from "@/models/Movie";
+import HomeSliderPopularNow from "@/components/slider/HomeSliderPopularNow.vue";
 
 const dataTest = {
     adult: false,
