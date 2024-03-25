@@ -23,4 +23,10 @@ import { RouterView } from "vue-router";
 .main-content-container {
     width: 100%;
 }
+
+@media screen and (max-width: 764px) {
+    #main-content {
+        padding: 0 !important;
+    }
+}
 </style>
