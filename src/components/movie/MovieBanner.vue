@@ -149,7 +149,7 @@ const formatDuration = (minutes: number): string => {
     background: var(--main-color);
     background-size: 150% auto;
     transition: 0.5s;
-    color: var(--text-color-light);
+    color: var(--text-btn-color);
     width: 160px;
     height: 40px;
     display: flex;
@@ -182,7 +182,7 @@ const formatDuration = (minutes: number): string => {
     background: var(--main-color);
     background-size: 150% auto;
     transition: 0.5s;
-    color: var(--text-color-light);
+    color: var(--text-btn-color);
     padding: 15px 80px;
     display: flex;
     align-items: center;
@@ -215,44 +215,5 @@ const formatDuration = (minutes: number): string => {
 
 .movie-banner_add-favorie-list i {
     font-size: 39px !important;
-}
-
-@media screen and (max-width: 1024px) {
-    .movie-banner-content {
-        width: 75%;
-    }
-
-    .movie-banner_genre {
-        justify-content: flex-start;
-    }
-}
-
-@media screen and (max-width: 764px) {
-    .movie-banner {
-        height: 100vh;
-    }
-
-    .movie-banner-content {
-        width: 100%;
-        padding: 80px 5% 20px 5%;
-    }
-
-    .movie-banner-content h2 {
-        font-size: 32px;
-    }
-
-    .movie-banner_overview {
-        font-size: 12px;
-    }
-
-    .movie-banner_buttons .movie-banner_discover {
-        padding: 15px 50px;
-        font-size: 16px;
-        max-height: 44px;
-    }
-    .movie-banner_add-favorie-list {
-        width: 44px;
-        height: 44px;
-    }
 }
 </style>

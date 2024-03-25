@@ -258,7 +258,6 @@ const updateMenuIsActive = (isActive: boolean) => {
 
     #menu {
         width: 100%;
-        height: 0;
     }
 
     #menu.isHover,
@@ -268,24 +267,15 @@ const updateMenuIsActive = (isActive: boolean) => {
 
     #menu .menu-container {
         width: 0;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 100px);
     }
 
     #menu.isActive .menu-container {
         width: 100% !important;
     }
 
-    .menu-top {
-        padding: 15px;
-    }
-
-    .menu-center {
-        padding: 20px 15px 15px 15px;
-    }
-
     .menu-bottom {
         border-top: 1px solid #505050;
-        padding: 15px;
     }
 }
 </style>

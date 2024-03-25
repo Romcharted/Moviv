@@ -1,6 +1,6 @@
 <template>
     <div class="menu-mobile">
-        <img src="https://fakeimg.pl/180x45/" alt="Profile image" />
+        <img src="https://fakeimg.pl/180x50/" alt="Profile image" />
 
         <div
             class="menu-mobile__hamburger-menu"
@@ -30,6 +30,7 @@ const toggleMenu = () => {
 <style>
 .menu-mobile {
     width: 100%;
+    height: 100px;
     background: var(--secondary-color);
 
     display: none;
@@ -38,12 +39,12 @@ const toggleMenu = () => {
     flex-direction: row;
     flex-wrap: nowrap;
 
-    padding: 5px 20px;
+    padding: 15px 30px;
 }
 
 .menu-mobile img {
     width: 180px;
-    height: 45px;
+    height: 50px;
     object-fit: cover;
     object-position: center;
     border-radius: var(--border-radius);
@@ -56,7 +57,7 @@ const toggleMenu = () => {
     align-items: flex-end;
     width: 50px;
     height: 34px;
-    margin: 15px;
+    margin: 20px;
     cursor: pointer;
 }
 
