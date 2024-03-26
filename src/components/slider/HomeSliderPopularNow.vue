@@ -5,7 +5,6 @@
         <swiper-container
             id="swiper-popular-now"
             init="false"
-            pagination="true"
             :modules="modules"
         >
             <swiper-slide
@@ -24,22 +23,29 @@ import { onMounted, defineEmits, defineProps } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 
+// Importation du module Pagination de Swiper
 import { Pagination } from "swiper/modules";
 const modules = [Pagination];
+
+// Importation des composants nécessaires
 import HomePopularNowItem from "./HomePopularNowItem.vue";
 import Movie from "@/models/Movie";
 import TitleSection from "@/components/TitleSection.vue";
 
+// Définition des props et des événements
 const props = defineProps<{
     movies: Movie[];
 }>();
-
 const emitMovieChange = defineEmits(["movieChange"]);
 
+// Paramètres du Swiper
 const swiperParams = {
     loop: true,
-    autoplay: {
+    /* autoplay: {
         delay: 4000,
+    }, */
+    pagination: {
+        clickable: true, // Rendre la pagination clickable
     },
     spaceBetween: 20,
     breakpoints: {
@@ -56,9 +62,57 @@ const swiperParams = {
     },
 };
 
+// Fonction exécutée après le montage du composant
 onMounted(() => {
+    // Récupération de l'élément du Swiper par son ID
     let swiperEl: any = document.getElementById("swiper-popular-now");
+
+    // Paramètres supplémentaires pour la pagination et les styles CSS
+    const params = {
+        injectStyles: [
+            `
+            :host .swiper{
+                padding-bottom: 50px !important;
+                box-sizing: border-box;
+            } 
+
+            :host(#swiper-popular-now) .swiper-pagination {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            :host(#swiper-popular-now) .swiper-pagination-bullet {
+                background: transparent !important;
+                width: 30px;
+                border-radius: 0px;
+                height: auto;
+                padding: 15px 0;
+                position: relative;
+            }
+
+            :host(#swiper-popular-now) .swiper-pagination-bullet::before {
+                content: "";
+                background-color: white;
+                opacity: 0.4;
+                width: 100%;
+                height: 4px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            :host(#swiper-popular-now) .swiper-pagination-bullet-active::before {
+                opacity: 1;
+            }
+        `,
+        ],
+    };
+
+    Object.assign(swiperEl, params);
     Object.assign(swiperEl, swiperParams);
+
     swiperEl.initialize();
 });
 </script>
@@ -78,38 +132,6 @@ onMounted(() => {
 #swiper-popular-now {
     width: 100%;
     height: 100%;
-    padding-bottom: 40px;
-}
-
-#swiper-popular-now .swiper-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#swiper-popular-now .swiper-pagination-bullet {
-    background: transparent !important;
-    width: 30px;
-    border-radius: 0px;
-    height: auto;
-    padding: 15px 0;
-    position: relative;
-}
-
-#swiper-popular-now .swiper-pagination-bullet::before {
-    content: "";
-    background-color: white;
-    opacity: 0.4;
-    width: 100%;
-    height: 4px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#swiper-popular-now .swiper-pagination-bullet-active::before {
-    opacity: 1;
 }
 
 @media screen and (max-width: 764px) {
