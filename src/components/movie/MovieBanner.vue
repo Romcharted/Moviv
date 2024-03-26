@@ -1,5 +1,6 @@
 <template>
     <div
+        v-if="movie"
         class="movie-banner"
         :style="{ 'background-image': 'url(' + movie.BackdropPath + ')' }"
     >
@@ -23,7 +24,9 @@
                 <span>{{ formatDuration(movie.Runtime) }}</span>
             </div>
 
-            <p class="movie-banner_overview">{{ movie.Overview }}</p>
+            <p class="movie-banner_overview">
+                {{ truncateOverview(movie.Overview) }}
+            </p>
 
             <div class="movie-banner_buttons">
                 <router-link
@@ -40,6 +43,10 @@
                 </button>
             </div>
         </div>
+    </div>
+    <div v-else class="movie-banner-placeholder">
+        <!-- Contenu alternatif si movie est null -->
+        <p>Loading...</p>
     </div>
 </template>
 
@@ -73,6 +80,13 @@ const formatDuration = (minutes: number): string => {
     const formattedMinutes =
         remainingMinutes > 0 ? `${remainingMinutes}min` : "";
     return `${formattedHours} ${formattedMinutes}`;
+};
+
+const truncateOverview = (overview: string): string => {
+    if (overview.length > 100) {
+        return overview.slice(0, 100) + "...";
+    }
+    return overview;
 };
 </script>
 
@@ -139,7 +153,7 @@ const formatDuration = (minutes: number): string => {
 .movie-banner_genre {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 15px;
     padding: 0;

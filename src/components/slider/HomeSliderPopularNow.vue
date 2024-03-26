@@ -8,7 +8,7 @@
             :modules="modules"
         >
             <swiper-slide
-                v-for="(movie, index) in movies"
+                v-for="(movie, index) in movies.Movies"
                 :key="movie.Id"
                 class="swiper-slide"
             >
@@ -30,22 +30,24 @@ const modules = [Pagination];
 // Importation des composants nécessaires
 import HomePopularNowItem from "./HomePopularNowItem.vue";
 import Movie from "@/models/Movie";
+import MovieList from "@/models/MovieList";
+
 import TitleSection from "@/components/TitleSection.vue";
 
 // Définition des props et des événements
 const props = defineProps<{
-    movies: Movie[];
+    movies: MovieList;
 }>();
 const emitMovieChange = defineEmits(["movieChange"]);
 
 // Paramètres du Swiper
 const swiperParams = {
     loop: true,
-    /* autoplay: {
+    autoplay: {
         delay: 4000,
-    }, */
+    },
     pagination: {
-        clickable: true, // Rendre la pagination clickable
+        clickable: true,
     },
     spaceBetween: 20,
     breakpoints: {
@@ -62,12 +64,9 @@ const swiperParams = {
     },
 };
 
-// Fonction exécutée après le montage du composant
 onMounted(() => {
-    // Récupération de l'élément du Swiper par son ID
     let swiperEl: any = document.getElementById("swiper-popular-now");
 
-    // Paramètres supplémentaires pour la pagination et les styles CSS
     const params = {
         injectStyles: [
             `

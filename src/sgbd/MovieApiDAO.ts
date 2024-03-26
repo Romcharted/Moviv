@@ -33,3 +33,5 @@ class MovieApiDAO implements IMovieDAO {
         throw new Error("Method not implemented.");
     }
 }
+
+export default MovieApiDAO;

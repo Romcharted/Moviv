@@ -35,11 +35,13 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    SortMoviesByTitle(ascending: boolean = true): void {
+    SortMoviesByTitle(ascending: boolean = true): Movie[] {
         this.movies.sort((a, b) => {
             const compare = a.Title.localeCompare(b.Title);
             return ascending ? compare : -compare;
         });
+
+        return this.movies;
     }
 
     /**
@@ -47,11 +49,13 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    SortMoviesByPopularity(ascending: boolean = false): void {
+    SortMoviesByPopularity(ascending: boolean = false): Movie[] {
         this.movies.sort((a, b) => {
             const compare = b.Popularity - a.Popularity;
             return ascending ? compare : -compare;
         });
+
+        return this.movies;
     }
 
     /**
@@ -59,11 +63,13 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    SortMoviesByVoteAverage(ascending: boolean = false): void {
+    SortMoviesByVoteAverage(ascending: boolean = false): Movie[] {
         this.movies.sort((a, b) => {
             const compare = b.VoteAverage - a.VoteAverage;
             return ascending ? compare : -compare;
         });
+
+        return this.movies;
     }
 
     /**
@@ -71,11 +77,13 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    SortMoviesByReleaseDate(ascending: boolean = true): void {
+    SortMoviesByReleaseDate(ascending: boolean = true): Movie[] {
         this.movies.sort((a, b) => {
             const compare = a.ReleaseDate.getTime() - b.ReleaseDate.getTime();
             return ascending ? compare : -compare;
         });
+
+        return this.movies;
     }
 
     /**
@@ -83,11 +91,13 @@ class MovieList {
      *
      * @param ascending boolean pour savoir le sens de trie
      */
-    SortMoviesByUserAddDate(ascending: boolean = true): void {
+    SortMoviesByUserAddDate(ascending: boolean = true): Movie[] {
         this.movies.sort((a, b) => {
             const compare = a.UserAddDate.getTime() - b.UserAddDate.getTime();
             return ascending ? compare : -compare;
         });
+
+        return this.movies;
     }
 }
 

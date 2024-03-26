@@ -44,15 +44,19 @@ class TMDB {
                         include_video: false,
                         page: 1,
                         sort_by: "popularity.desc",
+                        per_page: 10,
                     },
                 }
             );
 
             const moviesData = response.data.results;
+            const top10Movies = moviesData.slice(0, 10);
 
-            const movies: Movie[] = moviesData.map(
-                (movieData: any) => new Movie(movieData)
+            const promises = top10Movies.map((movieData: any) =>
+                this.GetMovieDetails(movieData.id)
             );
+
+            const movies: Movie[] = await Promise.all(promises);
 
             const popularMoviesList = new MovieList(
                 0,
