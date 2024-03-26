@@ -125,19 +125,19 @@ onMounted(() => {
     flex-wrap: nowrap;
     padding: 25px 50px;
     width: 100%;
-    height: 30%;
+    height: 40%;
     gap: 20px;
 }
 
 #swiper-popular-now {
     width: 100%;
-    height: 100%;
+    height: 80%;
 }
 
 @media screen and (max-width: 764px) {
     #home-slider-popular-now {
         padding: 20px;
-        height: 40vh;
+        height: 50vh;
     }
 }
 </style>

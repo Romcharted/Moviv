@@ -26,7 +26,7 @@ const props = defineProps<{
 
 .home-popular-now-item_number {
     font-family: "Anton", sans-serif;
-    font-size: 12.3em;
+    font-size: 15em;
 }
 
 .image-container {
@@ -42,13 +42,13 @@ const props = defineProps<{
 }
 @media screen and (max-width: 1300px) {
     .home-popular-now-item_number {
-        font-size: 7.5em;
+        font-size: 15em;
     }
 }
 
 @media screen and (max-width: 1024px) {
     .home-popular-now-item_number {
-        font-size: 12.5em;
+        font-size: 15em;
     }
 }
 
@@ -58,7 +58,7 @@ const props = defineProps<{
     }
 
     .home-popular-now-item_number {
-        font-size: 13.5em;
+        font-size: 11em;
     }
 
     .image-container {

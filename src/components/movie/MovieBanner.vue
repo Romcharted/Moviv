@@ -80,7 +80,7 @@ const formatDuration = (minutes: number): string => {
 .movie-banner {
     position: relative;
     width: 100%;
-    height: 70%;
+    height: 60%;
     background-position: center;
     background-size: cover;
 }
