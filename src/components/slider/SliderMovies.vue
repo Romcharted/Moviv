@@ -1,8 +1,8 @@
 <template>
-    <div id="home-slider-popular-now">
-        <TitleSection>Popular Now</TitleSection>
+    <div class="slider-movies">
+        <TitleSection>{{ title }}</TitleSection>
 
-        <div class="swiper-container" id="swiper-popular-now">
+        <div class="swiper-container" :id="idSlider">
             <div class="swiper-wrapper">
                 <div
                     v-for="(movie, index) in movies.Movies"
@@ -10,7 +10,7 @@
                     class="swiper-slide"
                     v-if="movies"
                 >
-                    <HomePopularNowItem :topNumber="index + 1" :movie="movie" />
+                    <MovieItemSlider :movie="movie" />
                 </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -18,26 +18,28 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-import { onMounted, defineEmits, defineProps } from "vue";
-import TitleSection from "@/components/TitleSection.vue";
-import HomePopularNowItem from "./HomePopularNowItem.vue";
-import MovieList from "@/models/MovieList";
+<script setup lang="ts">
+import { ref, defineProps, onMounted } from "vue";
 import Swiper from "swiper";
+import TitleSection from "@/components/TitleSection.vue";
+import MovieItemSlider from "@/components/movie/MovieItemSlider.vue";
+import MovieList from "@/models/MovieList";
 
 const props = defineProps<{
     movies: MovieList | null;
+    idSlider: string;
+    title: string;
 }>();
-const emitMovieChange = defineEmits(["movieChange"]);
 
 onMounted(() => {
-    let swiperEl = new Swiper("#swiper-popular-now", {
+    let swiperSelector = "#" + props.idSlider;
+    let swiperEl = new Swiper(swiperSelector, {
         loop: true,
         autoplay: {
             delay: 6000,
         },
         pagination: {
-            el: "#swiper-popular-now .swiper-pagination",
+            el: `${swiperSelector} .swiper-pagination`,
             clickable: true,
         },
         spaceBetween: 20,
@@ -48,21 +50,12 @@ onMounted(() => {
             1250: { slidesPerView: 4 },
             1650: { slidesPerView: 5 },
         },
-        on: {
-            slideChange: (swiper) => {
-                emitMovieChange("movieChange", swiper.realIndex);
-            },
-        },
     });
 });
 </script>
 
 <style>
-#home-slider-popular-now {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-wrap: nowrap;
+.slider-movies {
     padding: 25px 50px;
     width: 100%;
     height: 40%;
@@ -70,20 +63,19 @@ onMounted(() => {
     overflow: hidden;
 }
 
-#swiper-popular-now {
-    width: 100%;
-    height: 80%;
+.slider-movies .swiper-container {
     padding-bottom: 50px !important;
     box-sizing: border-box;
+    position: relative;
 }
 
-#swiper-popular-now .swiper-pagination {
+.slider-movies .swiper-pagination {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#swiper-popular-now .swiper-pagination-bullet {
+.slider-movies .swiper-pagination .swiper-pagination-bullet {
     background: transparent !important;
     width: 30px;
     border-radius: 0px;
@@ -92,7 +84,7 @@ onMounted(() => {
     position: relative;
 }
 
-#swiper-popular-now .swiper-pagination-bullet::before {
+.slider-movies .swiper-pagination .swiper-pagination-bullet::before {
     content: "";
     background-color: var(--text-color);
     opacity: 0.4;
@@ -104,14 +96,7 @@ onMounted(() => {
     transform: translate(-50%, -50%);
 }
 
-#swiper-popular-now .swiper-pagination-bullet-active::before {
+.slider-movies .swiper-pagination .swiper-pagination-bullet-active::before {
     opacity: 1;
-}
-
-@media screen and (max-width: 764px) {
-    #home-slider-popular-now {
-        padding: 20px;
-        height: 50vh;
-    }
 }
 </style>
