@@ -75,6 +75,7 @@ onMounted(() => {
     height: 80%;
     padding-bottom: 50px !important;
     box-sizing: border-box;
+    position: relative;
 }
 
 #swiper-popular-now .swiper-pagination {

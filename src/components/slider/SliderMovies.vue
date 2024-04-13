@@ -55,18 +55,24 @@ onMounted(() => {
 </script>
 
 <style>
+.slider-movies .swiper-slide {
+    height: unset;
+    overflow: hidden;
+}
+
 .slider-movies {
     padding: 25px 50px;
     width: 100%;
-    height: 40%;
-    gap: 20px;
-    overflow: hidden;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .slider-movies .swiper-container {
     padding-bottom: 50px !important;
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
 }
 
 .slider-movies .swiper-pagination {
@@ -98,5 +104,11 @@ onMounted(() => {
 
 .slider-movies .swiper-pagination .swiper-pagination-bullet-active::before {
     opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .slider-movies {
+        padding: 20px;
+    }
 }
 </style>

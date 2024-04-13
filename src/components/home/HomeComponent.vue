@@ -10,18 +10,6 @@
             id-slider="slider-currently"
             title="Actuellement au cinéma"
         />
-        <SliderMovies
-            v-if="movies"
-            :movies="movies"
-            id-slider="sliderdfddfd-currently"
-            title="Actuellementssdsf au cinéma"
-        />
-        <SliderMovies
-            v-if="movies"
-            :movies="movies"
-            id-slider="sliderdfsfdfdfdfdf-currently"
-            title="Actuellement au cdfdfdinéma"
-        />
     </div>
 </template>
 
@@ -53,5 +41,22 @@ movieApiDAO
     height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.sliders-container {
+    padding: 0 10%;
+}
+
+@media (max-width: 1024px) {
+    .sliders-container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 764px) {
+    .hero-section {
+        min-height: 100vh;
+        height: unset;
+    }
 }
 </style>
