@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, onMounted } from "vue";
+import { defineProps, onMounted } from "vue";
 import Swiper from "swiper";
 import TitleSection from "@/components/TitleSection.vue";
 import MovieItemSlider from "@/components/movie/MovieItemSlider.vue";

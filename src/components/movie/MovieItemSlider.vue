@@ -1,6 +1,6 @@
 <template>
     <div class="movie-item-slider">
-        <AddListBtn />
+        <AddListBtnSlider :idMovie="movie.Id" :active="true" />
 
         <router-link
             :to="'/movie/' + movie.Id"
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import Movie from "@/models/Movie";
-import AddListBtn from "@/components/button/AddListBtn.vue";
+import AddListBtnSlider from "@/components/button/AddListBtnSlider.vue";
 
 const props = defineProps<{
     movie: Movie;
@@ -39,6 +39,7 @@ const props = defineProps<{
 .movie-item-slider {
     font-family: "Anton", sans-serif;
     height: 100%;
+    position: relative;
 }
 
 .movie-item-slider_img-container {
