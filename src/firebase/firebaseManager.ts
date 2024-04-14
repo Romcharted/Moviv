@@ -1,5 +1,13 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
-import { Firestore, getFirestore } from "firebase/firestore";
+import {
+    Firestore,
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    DocumentReference,
+} from "firebase/firestore";
 import {
     GoogleAuthProvider,
     getAuth,
@@ -7,11 +15,12 @@ import {
     signInWithPopup,
     OAuthCredential,
     User,
-    getAdditionalUserInfo,
     onAuthStateChanged,
     setPersistence,
     browserLocalPersistence,
 } from "firebase/auth";
+
+import Settings from "@/models/Settings";
 
 class FirebaseManager {
     private app: FirebaseApp;
@@ -91,6 +100,63 @@ class FirebaseManager {
     // Méthode pour notifier tous les callbacks enregistrés
     private notifyAuthStateChanged(user: User | null): void {
         this.authStateChangedCallbacks.forEach((callback) => callback(user));
+    }
+
+    public async SaveUserSettings(settings: Settings): Promise<void> {
+        try {
+            const userSettingsRef = await this.getUserSettingsRef();
+            await setDoc(userSettingsRef, settings.toJSON());
+        } catch (error) {
+            console.error("Error saving user settings:", error);
+            throw error;
+        }
+    }
+
+    public async GetUserSettings(): Promise<Settings | null> {
+        try {
+            const userSettingsRef = await this.getUserSettingsRef();
+            const docSnapshot = await getDoc(userSettingsRef);
+
+            if (docSnapshot.exists()) {
+                return Settings.fromJSON(docSnapshot.data());
+            } else {
+                // Si le document des paramètres n'existe pas, retournez des paramètres par défaut
+                return new Settings("light-theme", "en", false);
+            }
+        } catch (error) {
+            console.error("Error getting user settings:", error);
+            return null;
+        }
+    }
+
+    private async getUserSettingsRef(): Promise<DocumentReference> {
+        if (this.user) {
+            const userDocRef = doc(this.firestore, "users", this.user.uid);
+            const userDocSnapshot = await getDoc(userDocRef);
+
+            if (userDocSnapshot.exists()) {
+                const settingsDocRef = doc(
+                    collection(userDocRef, "settings"),
+                    "userSettings"
+                );
+                return settingsDocRef;
+            } else {
+                await setDoc(userDocRef, {});
+                const settingsDocRef = doc(
+                    collection(userDocRef, "settings"),
+                    "userSettings"
+                );
+                const defaultSettings = new Settings(
+                    "light-theme",
+                    "en",
+                    false
+                );
+                await setDoc(settingsDocRef, defaultSettings.toJSON());
+                return settingsDocRef;
+            }
+        } else {
+            throw new Error("No user signed in.");
+        }
     }
 }
 

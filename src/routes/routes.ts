@@ -8,7 +8,7 @@ import ComingSoon from "@/views/ComingSoon.vue";
 import Top100 from "@/views/Top100.vue";
 import NotFound from "@/views/404.vue";
 import Notifications from "@/views/Notifications.vue";
-import Settings from "@/views/Settings.vue";
+import SettingsView from "@/views/SettingsView.vue";
 import LogIn from "@/views/LogIn.vue";
 import Lists from "@/views/Lists.vue";
 import OneList from "@/views/OneList.vue";
@@ -75,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/settings",
-        component: Settings,
+        component: SettingsView,
         name: "Settings",
     },
     {

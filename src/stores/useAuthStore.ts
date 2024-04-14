@@ -1,12 +1,11 @@
 import { defineStore } from "pinia";
 import FirebaseManager from "@/firebase/firebaseManager";
 import { User } from "firebase/auth";
+import firebaseManagerInstance from "@/firebase/firebaseManagerInstance";
 
 interface AuthState {
     currentUser: User | null;
 }
-
-const firebaseManager = new FirebaseManager();
 
 // Mise en place du store
 const UseAuthStore = defineStore({
@@ -20,10 +19,10 @@ const UseAuthStore = defineStore({
     },
     actions: {
         async SignIn(this): Promise<void> {
-            await firebaseManager.SignInWithGoogle();
+            await firebaseManagerInstance.SignInWithGoogle();
         },
         async SignOut(this): Promise<void> {
-            await firebaseManager.SignOut();
+            await firebaseManagerInstance.SignOut();
             this.currentUser = null;
         },
         SetUser(user: User | null): void {
@@ -33,7 +32,7 @@ const UseAuthStore = defineStore({
 });
 
 // Enregistre un callback pour mettre à jour l'utilisateur authentifié
-firebaseManager.registerAuthStateChangedCallback((user) => {
+firebaseManagerInstance.registerAuthStateChangedCallback((user) => {
     UseAuthStore().currentUser = user;
 });
 
