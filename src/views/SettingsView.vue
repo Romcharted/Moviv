@@ -15,11 +15,11 @@
         <!-- Affichage des paramètres de l'utilisateur -->
         <div v-if="authStore.IsLoggedIn">
             <h2>Paramètres de l'utilisateur</h2>
-            <p>Thème: {{ settingsStore.userSettings.theme }}</p>
-            <p>Langue: {{ settingsStore.userSettings.language }}</p>
+            <p>Thème: {{ settingsStore.userSettings?.theme }}</p>
+            <p>Langue: {{ settingsStore.userSettings?.language }}</p>
             <p>
                 Notifications activées:
-                {{ settingsStore.userSettings.notificationEnabled }}
+                {{ settingsStore.userSettings?.notificationEnabled }}
             </p>
 
             <!-- Formulaire pour modifier les paramètres de l'utilisateur -->

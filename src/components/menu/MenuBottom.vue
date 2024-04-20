@@ -42,10 +42,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import UseAuthStore from "@/stores/useAuthStore";
+import useSettingsStore from "@/stores/useSettingsStore";
+import Settings from "@/models/Settings";
 
 const authStore = UseAuthStore();
+const settingsStore = useSettingsStore();
 
 // Fonction pour définir le thème et mettre à jour
 const setTheme = (theme: string) => {
@@ -53,12 +56,23 @@ const setTheme = (theme: string) => {
     document.documentElement.className = theme;
     userTheme.value = theme;
     userThemeToggleActive.value = theme === "dark-theme" ? true : false;
+    if (settingsStore.userSettings) {
+        settingsStore.updateUserSettings(
+            new Settings(
+                theme,
+                settingsStore.userSettings.language,
+                settingsStore.userSettings.notificationEnabled
+            )
+        );
+    }
 };
 
 // Fonction pour récupérer le thème stocké dans le localStorage
 const getTheme = (): string => {
-    const storedTheme = localStorage.getItem("user-theme");
-    return storedTheme ? storedTheme : "light-theme";
+    const storedTheme = settingsStore.userSettings
+        ? settingsStore.userSettings.theme
+        : localStorage.getItem("user-theme") || "light-theme";
+    return storedTheme;
 };
 
 const userTheme = ref(getTheme());
@@ -73,15 +87,21 @@ const toggleTheme = () => {
 
 onMounted(() => {
     // Récupère le thème stocké dans le localStorage
-    const storedTheme = localStorage.getItem("user-theme");
-
-    // Si un thème est stocké, appliquer ce thème, sinon, appliquer le thème par défaut "light-theme"
-    if (storedTheme) {
-        setTheme(storedTheme);
-    } else {
-        setTheme("light-theme");
-    }
+    const storedTheme = settingsStore.userSettings
+        ? settingsStore.userSettings.theme
+        : localStorage.getItem("user-theme") || "light-theme";
+    setTheme(storedTheme);
 });
+
+// Surveil pour détecter les changements dans settingsStore.userSettings.theme
+watch(
+    () => settingsStore.userSettings?.theme,
+    (newTheme) => {
+        if (newTheme !== userTheme.value) {
+            setTheme(newTheme);
+        }
+    }
+);
 </script>
 
 <style>

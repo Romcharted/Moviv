@@ -3,13 +3,13 @@ import firebaseManagerInstance from "@/firebase/firebaseManagerInstance";
 import Settings from "@/models/Settings";
 
 interface SettingsState {
-    userSettingsData: Settings;
+    userSettingsData: Settings | null;
 }
 
 const useSettingsStore = defineStore({
     id: "settings",
     state: (): SettingsState => ({
-        userSettingsData: new Settings("light-theme", "en", false),
+        userSettingsData: null,
     }),
     getters: {
         userSettings: (state): Settings => state.userSettingsData,
@@ -48,11 +48,7 @@ firebaseManagerInstance.registerAuthStateChangedCallback(async (user: any) => {
         const settings = await firebaseManagerInstance.GetUserSettings();
         useSettingsStore().userSettingsData = settings;
     } else {
-        useSettingsStore().userSettingsData = new Settings(
-            "light-theme",
-            "en",
-            false
-        );
+        useSettingsStore().userSettingsData = null;
     }
 });
 
