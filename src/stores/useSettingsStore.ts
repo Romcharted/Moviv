@@ -3,16 +3,16 @@ import firebaseManagerInstance from "@/firebase/firebaseManagerInstance";
 import Settings from "@/models/Settings";
 
 interface SettingsState {
-    userSettingsData: Settings | null;
+    userSettingsData: Settings;
 }
 
 const useSettingsStore = defineStore({
     id: "settings",
     state: (): SettingsState => ({
-        userSettingsData: new Settings("sdf", "eeee", false),
+        userSettingsData: new Settings("light-theme", "en", false),
     }),
     getters: {
-        userSettings: (state): Settings | null => state.userSettingsData,
+        userSettings: (state): Settings => state.userSettingsData,
     },
     actions: {
         async fetchUserSettings(this): Promise<void> {
@@ -48,7 +48,11 @@ firebaseManagerInstance.registerAuthStateChangedCallback(async (user: any) => {
         const settings = await firebaseManagerInstance.GetUserSettings();
         useSettingsStore().userSettingsData = settings;
     } else {
-        useSettingsStore().userSettingsData = null;
+        useSettingsStore().userSettingsData = new Settings(
+            "light-theme",
+            "en",
+            false
+        );
     }
 });
 

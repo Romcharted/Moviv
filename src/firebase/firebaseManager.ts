@@ -112,7 +112,7 @@ class FirebaseManager {
         }
     }
 
-    public async GetUserSettings(): Promise<Settings | null> {
+    public async GetUserSettings(): Promise<Settings> {
         try {
             const userSettingsRef = await this.getUserSettingsRef();
             const docSnapshot = await getDoc(userSettingsRef);
@@ -125,7 +125,7 @@ class FirebaseManager {
             }
         } catch (error) {
             console.error("Error getting user settings:", error);
-            return null;
+            return new Settings("light-theme", "en", false);
         }
     }
 
