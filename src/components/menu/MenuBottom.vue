@@ -97,7 +97,7 @@ onMounted(() => {
 watch(
     () => settingsStore.userSettings?.theme,
     (newTheme) => {
-        if (newTheme !== userTheme.value) {
+        if (newTheme !== undefined && newTheme !== userTheme.value) {
             setTheme(newTheme);
         }
     }

@@ -26,7 +26,7 @@ import MovieList from "@/models/MovieList";
 import Swiper from "swiper";
 
 const props = defineProps<{
-    movies: MovieList | null;
+    movies: any;
 }>();
 const emitMovieChange = defineEmits(["movieChange"]);
 

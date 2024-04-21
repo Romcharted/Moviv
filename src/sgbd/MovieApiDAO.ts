@@ -27,7 +27,7 @@ class MovieApiDAO implements IMovieDAO {
         return this.api.GetPopularMovies();
     }
 
-    SearchMovies(query: string): Promise<MovieList> {
+    SearchMovies(_query: string): Promise<MovieList> {
         throw new Error("Method not implemented.");
     }
     GetTopRatedMovies(): Promise<MovieList> {

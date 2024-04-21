@@ -26,7 +26,7 @@ import MovieItemSlider from "@/components/movie/MovieItemSlider.vue";
 import MovieList from "@/models/MovieList";
 
 const props = defineProps<{
-    movies: MovieList | null;
+    movies: any;
     idSlider: string;
     title: string;
 }>();

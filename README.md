@@ -1,5 +1,7 @@
 # Moviv
 
+Le lien vers le site : [https://moviv.netlify.app](https://moviv.netlify.app)
+
 ## Description
 
 Ce projet est en cours de construction. Actuellement, il permet aux utilisateurs de se connecter avec leur compte Google, d'enregistrer leurs paramètres, de naviguer sur la page d'accueil et de consulter les détails d'un film spécifique.

@@ -97,8 +97,7 @@ const updateUserSettings = () => {
         const updatedSettings = new Settings(
             darkThemeEnabled.value ? "dark-theme" : "light-theme",
             selectedLanguage.value,
-            newNotificationEnabled.value ||
-                settingsStore.userSettings.notificationEnabled
+            newNotificationEnabled.value
         );
 
         settingsStore.updateUserSettings(updatedSettings);

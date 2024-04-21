@@ -50,7 +50,7 @@ import i18n from "@/i18n";
 import Movie from "@/models/Movie";
 
 const props = defineProps<{
-    movie: Movie;
+    movie: any;
 }>();
 
 const addToFavorieList = () => {
