@@ -1,39 +1,53 @@
 <template>
-    <div>
-        <h1>Settings Page</h1>
+    <div class="settings">
+        <div class="settings-container">
+            <h1>Settings Page</h1>
 
-        <!-- Affichage des informations de connexion -->
-        <div v-if="authStore.IsLoggedIn">
-            <p>Connecté en tant que {{ authStore.currentUser?.displayName }}</p>
-            <button @click="authStore.SignOut()">Déconnexion</button>
-        </div>
-        <div v-else>
-            <p>Non connecté</p>
-            <button @click="authStore.SignIn()">Connexion</button>
-        </div>
+            <!-- Affichage des informations de connexion -->
+            <div v-if="authStore.IsLoggedIn" class="settings-auth">
+                <p>
+                    Connecté en tant que
+                    {{ authStore.currentUser?.displayName }}
+                </p>
+                <button @click="authStore.SignOut()">Déconnexion</button>
+            </div>
+            <div v-else>
+                <p>Non connecté</p>
+                <button @click="authStore.SignIn()">Connexion</button>
+            </div>
 
-        <!-- Affichage du formulaire de modification des paramètres de l'utilisateur -->
-        <div v-if="authStore.IsLoggedIn">
-            <h2>Modifier les paramètres</h2>
-            <form @submit.prevent="updateUserSettings">
-                <label for="theme">Thème:</label>
-                <input type="checkbox" id="theme" v-model="darkThemeEnabled" />
-                <br />
-                <label for="language">Langue:</label>
-                <select v-model="selectedLanguage">
-                    <option value="fr">Français</option>
-                    <option value="en">English</option>
-                </select>
-                <br />
-                <label for="notificationEnabled">Notifications activées:</label>
-                <input
-                    type="checkbox"
-                    id="notificationEnabled"
-                    v-model="newNotificationEnabled"
-                />
-                <br />
-                <button type="submit">Enregistrer</button>
-            </form>
+            <!-- Affichage du formulaire de modification des paramètres de l'utilisateur -->
+            <div v-if="authStore.IsLoggedIn" class="settings-form_container">
+                <h2>Modifier les paramètres</h2>
+                <form @submit.prevent="updateUserSettings">
+                    <div class="form-group">
+                        <label for="theme">Thème:</label>
+                        <input
+                            type="checkbox"
+                            id="theme"
+                            v-model="darkThemeEnabled"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Langue:</label>
+                        <select v-model="selectedLanguage">
+                            <option value="fr">Français</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="notificationEnabled"
+                            >Notifications activées:</label
+                        >
+                        <input
+                            type="checkbox"
+                            id="notificationEnabled"
+                            v-model="newNotificationEnabled"
+                        />
+                    </div>
+                    <button type="submit">Enregistrer</button>
+                </form>
+            </div>
         </div>
     </div>
 </template>
@@ -83,3 +97,45 @@ const updateUserSettings = () => {
     }
 };
 </script>
+
+<style>
+.settings {
+    padding: 80px 5%;
+}
+
+.settings-container {
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settings-form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settings-form_container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settings-form_container form label {
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 764px) {
+}
+</style>
