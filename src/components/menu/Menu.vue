@@ -38,7 +38,6 @@ import MenuList from "./menuList/MenuList.vue";
 import MenuBottom from "./MenuBottom.vue";
 
 import { ref } from "vue";
-import router from "@/routes/routes";
 
 const menuIsHover = ref(false);
 const menuIsActive = ref(false);

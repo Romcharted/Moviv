@@ -231,6 +231,12 @@ const truncateOverview = (overview: string): string => {
     font-size: 39px !important;
 }
 
+@media screen and (max-width: 1300px) {
+    .movie-banner-content {
+        width: 85%;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .movie-banner-content {
         width: 75%;

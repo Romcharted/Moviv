@@ -40,9 +40,16 @@ const props = defineProps<{
     object-fit: cover;
     object-position: center;
 }
-@media screen and (max-width: 1300px) {
+
+@media screen and (max-width: 1600px) {
     .home-popular-now-item_number {
         font-size: 15em;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .home-popular-now-item_number {
+        font-size: 11em;
     }
 }
 
