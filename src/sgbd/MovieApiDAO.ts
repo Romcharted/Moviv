@@ -19,6 +19,10 @@ class MovieApiDAO implements IMovieDAO {
         }
     }
 
+    /**
+     *
+     * @returns
+     */
     GetPopularMovies(): Promise<MovieList> {
         return this.api.GetPopularMovies();
     }

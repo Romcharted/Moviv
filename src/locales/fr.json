@@ -14,6 +14,15 @@
     "settings": {
         "dark-mode": "Mode sombre",
         "logout": "Déconnexion",
-        "sign-in": "Connexion"
+        "sign-in": "Connexion",
+        "setting": "Paramètres",
+        "locale": "Language",
+        "notifActivate": "Notifications activées",
+        "save": "Enregistrer",
+        "connecte": "Connecté en tant que",
+        "modif": "Modifier les paramètres"
+    },
+    "home": {
+        "discover": "Découvrir"
     }
 }

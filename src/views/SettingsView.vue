@@ -1,27 +1,33 @@
 <template>
     <div class="settings">
         <div class="settings-container">
-            <h1>Settings Page</h1>
+            <h1>{{ $t("settings.setting") }}</h1>
 
             <!-- Affichage des informations de connexion -->
             <div v-if="authStore.IsLoggedIn" class="settings-auth">
                 <p>
-                    Connecté en tant que
+                    {{ $t("settings.connecte") }}
                     {{ authStore.currentUser?.displayName }}
                 </p>
-                <button @click="authStore.SignOut()">Déconnexion</button>
+                <button @click="authStore.SignOut()">
+                    {{ $t("settings.logout") }}
+                </button>
             </div>
             <div v-else>
                 <p>Non connecté</p>
-                <button @click="authStore.SignIn()">Connexion</button>
+                <button @click="authStore.SignIn()">
+                    {{ $t("settings.sign-in") }}
+                </button>
             </div>
 
             <!-- Affichage du formulaire de modification des paramètres de l'utilisateur -->
             <div v-if="authStore.IsLoggedIn" class="settings-form_container">
-                <h2>Modifier les paramètres</h2>
+                <h2>{{ $t("settings.modif") }}</h2>
                 <form @submit.prevent="updateUserSettings">
                     <div class="form-group">
-                        <label for="theme">Thème:</label>
+                        <label for="theme"
+                            >{{ $t("settings.dark-mode") }} :</label
+                        >
                         <input
                             type="checkbox"
                             id="theme"
@@ -29,7 +35,9 @@
                         />
                     </div>
                     <div class="form-group">
-                        <label for="language">Langue:</label>
+                        <label for="language"
+                            >{{ $t("settings.locale") }} :</label
+                        >
                         <select v-model="selectedLanguage">
                             <option value="fr">Français</option>
                             <option value="en">English</option>
@@ -37,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="notificationEnabled"
-                            >Notifications activées:</label
+                            >{{ $t("settings.notifActivate") }}:</label
                         >
                         <input
                             type="checkbox"
@@ -45,7 +53,7 @@
                             v-model="newNotificationEnabled"
                         />
                     </div>
-                    <button type="submit">Enregistrer</button>
+                    <button type="submit">{{ $t("settings.save") }}</button>
                 </form>
             </div>
         </div>

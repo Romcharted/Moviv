@@ -6,7 +6,7 @@
             aria-current-value="page"
         >
             <i class="material-icons-outlined"> settings </i>
-            <span>Settings</span>
+            <span>{{ $t("settings.setting") }}</span>
         </router-link>
 
         <div v-if="authStore.IsLoggedIn" class="menu-bottom__item">

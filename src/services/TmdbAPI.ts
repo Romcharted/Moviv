@@ -3,6 +3,9 @@ import Movie from "@/models/Movie";
 import i18n from "@/i18n";
 import MovieList from "@/models/MovieList";
 
+/**
+ * Classe pour interagir avec l'API TMDB
+ */
 class TMDB {
     private apiKey: string;
     private baseUrl: string;
@@ -14,6 +17,11 @@ class TMDB {
         this.imgUrl = "https://image.tmdb.org/t/p/original/";
     }
 
+    /**
+     * Récupère les détails d'un film à partir de l'API TMDB en utilisant son identifiant.
+     * @param movieId L'identifiant du film.
+     * @returns Une promesse résolue avec les détails du film.
+     */
     async GetMovieDetails(movieId: number): Promise<Movie> {
         try {
             const response: AxiosResponse = await axios.get(
@@ -32,6 +40,10 @@ class TMDB {
         }
     }
 
+    /**
+     * Récupère une liste des films populaires à partir de l'API TMDB.
+     * @returns Une promesse résolue avec la liste des films populaires.
+     */
     async GetPopularMovies(): Promise<MovieList> {
         try {
             const response: AxiosResponse = await axios.get(

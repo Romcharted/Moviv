@@ -33,7 +33,7 @@
                     :to="{ name: 'Movie', params: { id: movie.Id } }"
                     aria-current-value="page"
                     class="movie-banner-home_discover"
-                    >Discover</router-link
+                    >{{ $t("home.discover") }}</router-link
                 >
                 <button
                     class="movie-banner-home_add-favorie-list"

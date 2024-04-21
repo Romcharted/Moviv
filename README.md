@@ -1,18 +1,37 @@
-# Vue 3 + TypeScript + Vite
+# Moviv
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Description
 
-## Recommended IDE Setup
+Ce projet est en cours de construction. Actuellement, il permet aux utilisateurs de se connecter avec leur compte Google, d'enregistrer leurs paramètres, de naviguer sur la page d'accueil et de consulter les détails d'un film spécifique.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Fonctionnalités
 
-## Type Support For `.vue` Imports in TS
+-   Connexion avec Google
+-   Enregistrement des paramètres utilisateur
+-   Page d'accueil
+-   Détails d'un film
+-   Support pour les langues FR et EN
+-   Thèmes sombre et clair
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Technologies Utilisées
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+-   Vue.js
+-   Firebase Authentication
+-   Firebase Firestore
+-   Vue Router
+-   Vue I18n
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Utilisation
+
+Il vous faut créer un .env.local comme ci-dessous mais avec vos informations :
+
+```
+VITE_FIREBASE_APIKEY=""
+VITE_FIREBASE_AUTHDOMAIN=""
+VITE_FIREBASE_PROJECTID=""
+VITE_FIREBASE_STORAGEBUCKET=""
+VITE_FIREBASE_MESSAGINGSENDERID=""
+VITE_FIREBASE_APPID=""
+VITE_FIREBASE_MEASUREMENTID=""
+VITE_TMDB_API_KEY=""
+```
