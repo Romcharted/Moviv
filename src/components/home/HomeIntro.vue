@@ -1,6 +1,6 @@
 <template>
     <div class="home-intro">
-        <MovieBanner :movie="movie" />
+        <MovieBannerHome :movie="movie" />
         <HomeSliderPopularNow
             v-if="movies && movies.Movies.length > 5"
             :movies="movies"
@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import MovieBanner from "@/components/movie/MovieBanner.vue";
+import MovieBannerHome from "@/components/movie/MovieBannerHome.vue";
 import HomeSliderPopularNow from "@/components/slider/HomeSliderPopularNow.vue";
 import Movie from "@/models/Movie";
 import MovieList from "@/models/MovieList";

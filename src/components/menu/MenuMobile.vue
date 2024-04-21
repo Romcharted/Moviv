@@ -1,6 +1,6 @@
 <template>
     <div class="menu-mobile">
-        <img src="https://fakeimg.pl/180x45/" alt="Profile image" />
+        <img src="@/assets/img/logo-no-background.png" alt="Profile image" />
 
         <div
             class="menu-mobile__hamburger-menu"

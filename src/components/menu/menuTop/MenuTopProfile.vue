@@ -2,14 +2,15 @@
     <div class="menu-top__profile" v-if="authStore.IsLoggedIn">
         <img
             :src="
-                authStore.CurrentUser?.photoURL ?? 'https://fakeimg.pl/40x40/'
+                authStore.CurrentUser?.photoURL ??
+                '@/assets/img/moviv-favicon-color.png'
             "
             alt="Profile image"
         />
         <span>{{ authStore.CurrentUser?.displayName }}</span>
     </div>
     <div class="menu-top__profile" v-else>
-        <img src="https://fakeimg.pl/40x40/?text=Guest" alt="Guest image" />
+        <img src="@/assets/img/moviv-favicon-color.png" alt="Guest image" />
         <span>Guest</span>
     </div>
 </template>

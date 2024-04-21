@@ -1,20 +1,20 @@
 <template>
     <div
         v-if="movie"
-        class="movie-banner"
+        class="movie-banner-home"
         :style="{ 'background-image': 'url(' + movie.BackdropPath + ')' }"
     >
-        <div class="movie-banner-overlay"></div>
-        <div class="movie-banner-content">
-            <h1>{{ movie.Title }}</h1>
+        <div class="movie-banner-home-overlay"></div>
+        <div class="movie-banner-home-content">
+            <h2>{{ movie.Title }}</h2>
 
-            <ul class="movie-banner_genre">
+            <ul class="movie-banner-home_genre">
                 <li v-for="genre in movie.Genres" :key="genre.id">
                     {{ genre.name }}
                 </li>
             </ul>
 
-            <div class="movie-banne_details-content">
+            <div class="movie-banne-home_details-content">
                 <span>{{ movie.Status }}</span>
                 <span>•</span>
                 <span>{{
@@ -24,13 +24,19 @@
                 <span>{{ formatDuration(movie.Runtime) }}</span>
             </div>
 
-            <p class="movie-banner_overview">
+            <p class="movie-banner-home_overview">
                 {{ truncateOverview(movie.Overview) }}
             </p>
 
-            <div class="movie-banner_buttons">
+            <div class="movie-banner-home_buttons">
+                <router-link
+                    :to="{ name: 'Movie', params: { id: movie.Id } }"
+                    aria-current-value="page"
+                    class="movie-banner-home_discover"
+                    >Discover</router-link
+                >
                 <button
-                    class="movie-banner_add-favorie-list"
+                    class="movie-banner-home_add-favorie-list"
                     @click="addToFavorieList"
                 >
                     <i class="material-icons-outlined"> add </i>
@@ -38,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div v-else class="movie-banner-placeholder">
+    <div v-else class="movie-banner-home-placeholder">
         <!-- Contenu alternatif si movie est null -->
         <p>Loading...</p>
     </div>
@@ -85,16 +91,15 @@ const truncateOverview = (overview: string): string => {
 </script>
 
 <style>
-.movie-banner {
+.movie-banner-home {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 60%;
     background-position: center;
     background-size: cover;
-    min-height: 100vh;
 }
 
-.movie-banner-overlay {
+.movie-banner-home-overlay {
     content: "";
     position: absolute;
     top: 0;
@@ -123,7 +128,7 @@ const truncateOverview = (overview: string): string => {
 }
 
 /* ====================== Movie banner content ====================== */
-.movie-banner-content {
+.movie-banner-home-content {
     z-index: 2;
     position: relative;
     padding: 80px 5%;
@@ -140,12 +145,12 @@ const truncateOverview = (overview: string): string => {
     color: var(--text-color-light);
 }
 
-.movie-banner-content h1 {
+.movie-banner-home-content h2 {
     font-size: 64px;
     font-family: "Anton", sans-serif;
 }
 
-.movie-banner_genre {
+.movie-banner-home_genre {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -154,7 +159,7 @@ const truncateOverview = (overview: string): string => {
     padding: 0;
 }
 
-.movie-banner_genre li {
+.movie-banner-home_genre li {
     background: var(--main-color);
     background-size: 150% auto;
     transition: 0.5s;
@@ -175,19 +180,19 @@ const truncateOverview = (overview: string): string => {
     gap: 10px;
 }
 
-.movie-banner_overview {
+.movie-banner-home_overview {
     font-size: 16px;
 }
 
 /* ============ Movie banner Buttons ============ */
-.movie-banner_buttons {
+.movie-banner-home_buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 25px;
 }
 
-.movie-banner_buttons .movie-banner_discover {
+.movie-banner-home_buttons .movie-banner-home_discover {
     background: var(--main-color);
     background-size: 150% auto;
     transition: 0.5s;
@@ -200,11 +205,11 @@ const truncateOverview = (overview: string): string => {
     font-size: 18px;
     max-height: 54px;
 }
-.movie-banner_buttons .movie-banner_discover:hover {
+.movie-banner-home_buttons .movie-banner-home_discover:hover {
     background-position: right center;
 }
 
-.movie-banner_add-favorie-list {
+.movie-banner-home_add-favorie-list {
     width: 54px;
     height: 54px;
     border-radius: var(--border-radius);
@@ -218,74 +223,56 @@ const truncateOverview = (overview: string): string => {
     transition: background 0.3s;
 }
 
-.movie-banner_add-favorie-list:hover {
+.movie-banner-home_add-favorie-list:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-.movie-banner_add-favorie-list i {
+.movie-banner-home_add-favorie-list i {
     font-size: 39px !important;
 }
 
 @media screen and (max-width: 1300px) {
-    .movie-banner-content {
+    .movie-banner-home-content {
         width: 85%;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .movie-banner-content {
+    .movie-banner-home-content {
         width: 75%;
     }
 
-    .movie-banner_genre {
+    .movie-banner-home_genre {
         justify-content: flex-start;
     }
 }
 
 @media screen and (max-width: 764px) {
-    .movie-banner {
+    .movie-banner-home {
         height: 100vh;
     }
 
-    .movie-banner-content {
+    .movie-banner-home-content {
         width: 100%;
         padding: 80px 5% 20px 5%;
     }
 
-    .movie-banner-content h2 {
+    .movie-banner-home-content h2 {
         font-size: 32px;
     }
 
-    .movie-banner_overview {
+    .movie-banner-home_overview {
         font-size: 12px;
     }
 
-    .movie-banner_buttons .movie-banner_discover {
+    .movie-banner-home_buttons .movie-banner-home_discover {
         padding: 15px 50px;
         font-size: 16px;
         max-height: 44px;
     }
-    .movie-banner_add-favorie-list {
+    .movie-banner-home_add-favorie-list {
         width: 44px;
         height: 44px;
-    }
-
-    .movie-banner-overlay {
-        background: -moz-linear-gradient(
-            90deg,
-            rgba(15, 15, 15, 1) 0%,
-            rgba(15, 15, 15, 0) 100%
-        );
-        background: -webkit-linear-gradient(
-            90deg,
-            rgba(15, 15, 15, 1) 0%,
-            rgba(15, 15, 15, 0) 100%
-        );
-        background: linear-gradient(
-            90deg,
-            rgba(15, 15, 15, 1) 0%,
-            rgba(15, 15, 15, 0) 100%
-        );
     }
 }
 </style>
